@@ -8,6 +8,9 @@ export const readJson = (file) => JSON.parse(readFileSync(file, "utf8"));
 export const rootPkg = () => readJson(join(root, "package.json"));
 export const packDefs = () => readJson(join(root, "packs", "packs.json")).packs;
 
+/** Whether the main UniversalTools pack installs this sub-pack (language packs are standalone). */
+export const inMain = (def) => def.includeInMain !== false;
+
 /** Extension name of a sub-pack, e.g. "universaltools-web-core". */
 export const packName = (def) => `universaltools-${def.dir}`;
 /** Full id of a sub-pack, e.g. "universaltools.universaltools-web-core". */

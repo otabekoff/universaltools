@@ -1,8 +1,8 @@
 # UniversalTools: Everyday Tools
 
-Code screenshots, translation, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.
+Code screenshots, translation, a code runner, saved terminal sessions, a PDF viewer, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.
 
-Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
+Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools web packs. Install this one on its own if you only need these extensions.
 
 **Developer:** [Otabek Sadiridinov](https://github.com/otabekoff) · [Source code](https://github.com/otabekoff/universaltools/tree/master/packs/everyday-tools) · [Report an issue](https://github.com/otabekoff/universaltools/issues)
 
@@ -18,6 +18,9 @@ Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=uni
 | [lacroixdavid1.vscode-format-context-menu](https://marketplace.visualstudio.com/items?itemName=lacroixdavid1.vscode-format-context-menu) |
 | [PKief.material-icon-theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) |
 | [ahmadawais.shades-of-purple](https://marketplace.visualstudio.com/items?itemName=ahmadawais.shades-of-purple) |
+| [formulahendry.code-runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) |
+| [nguyenngoclong.terminal-keeper](https://marketplace.visualstudio.com/items?itemName=nguyenngoclong.terminal-keeper) |
+| [tomoki1207.pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf) |
 
 ## License
 

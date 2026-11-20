@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Globe for UniversalTools: Web Core. Outline, lens-shaped meridians, curved latitudes. -->
+  <circle cx="12" cy="12" r="9.5" stroke-width="1.5"/>
+  <path d="M12 2.5C7.4 7.2 7.4 16.8 12 21.5" stroke-width="1.5"/>
+  <path d="M12 2.5C16.6 7.2 16.6 16.8 12 21.5" stroke-width="1.5"/>
+  <path d="M3.9 7.4C8.6 10.6 15.4 10.6 20.1 7.4" stroke-width="1.5"/>
+  <path d="M3.9 16.6C8.6 13.4 15.4 13.4 20.1 16.6" stroke-width="1.5"/>
+</svg>

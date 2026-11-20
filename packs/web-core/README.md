@@ -2,7 +2,7 @@
 
 Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.
 
-Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
+Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools web packs. Install this one on its own if you only need these extensions.
 
 **Developer:** [Otabek Sadiridinov](https://github.com/otabekoff) · [Source code](https://github.com/otabekoff/universaltools/tree/master/packs/web-core) · [Report an issue](https://github.com/otabekoff/universaltools/issues)
 
@@ -46,6 +46,8 @@ Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=uni
 | [jack89ita.open-file-from-path](https://marketplace.visualstudio.com/items?itemName=jack89ita.open-file-from-path) |
 | [jock.svg](https://marketplace.visualstudio.com/items?itemName=jock.svg) |
 | [kisstkondoros.vscode-gutter-preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview) |
+| [ms-edgedevtools.vscode-edge-devtools](https://marketplace.visualstudio.com/items?itemName=ms-edgedevtools.vscode-edge-devtools) |
+| [MS-vsliveshare.vsliveshare](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) |
 
 ## License
 

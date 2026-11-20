@@ -1,8 +1,8 @@
 {
     "name": "universaltools-everyday-tools",
     "displayName": "UniversalTools: Everyday Tools",
-    "description": "Code screenshots, translation, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
-    "version": "4.0.0",
+    "description": "Code screenshots, translation, a code runner, saved terminal sessions, a PDF viewer, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
+    "version": "4.2.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",
@@ -36,7 +36,10 @@
         "random",
         "clock",
         "theme",
-        "icons"
+        "icons",
+        "code runner",
+        "terminal",
+        "pdf"
     ],
     "extensionPack": [
         "adpyke.codesnap",
@@ -46,6 +49,9 @@
         "madprops.when-did-i-start-working",
         "lacroixdavid1.vscode-format-context-menu",
         "PKief.material-icon-theme",
-        "ahmadawais.shades-of-purple"
+        "ahmadawais.shades-of-purple",
+        "formulahendry.code-runner",
+        "nguyenngoclong.terminal-keeper",
+        "tomoki1207.pdf"
     ]
 }

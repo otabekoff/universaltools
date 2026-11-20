@@ -1,0 +1,46 @@
+{
+    "name": "universaltools-cpp",
+    "displayName": "UniversalTools: C/C++",
+    "description": "C/C++ IntelliSense and debugging, CMake and Makefile projects, and the CodeLLDB debugger.",
+    "version": "4.2.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/cpp#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/cpp"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "c",
+        "c++",
+        "cpp",
+        "cmake",
+        "makefile",
+        "lldb"
+    ],
+    "extensionPack": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.makefile-tools",
+        "vadimcn.vscode-lldb"
+    ]
+}

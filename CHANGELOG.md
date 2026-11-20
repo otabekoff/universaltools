@@ -2,6 +2,33 @@
 
 All notable changes to the "universaltools" extension pack will be documented in this file.
 
+## [4.2.0]
+
+### Added
+
+- **Web Core:** Microsoft Edge Tools (`ms-edgedevtools.vscode-edge-devtools`), Live Share (`MS-vsliveshare.vsliveshare`)
+- **Frameworks:** Slidev (`antfu.slidev`), Tauri (`tauri-apps.tauri-vscode`)
+- **Everyday Tools:** Code Runner (`formulahendry.code-runner`), Terminal Keeper (`nguyenngoclong.terminal-keeper`), vscode-pdf (`tomoki1207.pdf`)
+
+All seven were checked on the VS Code Marketplace: published, not deprecated, and maintained.
+
+### New language packs
+
+Standalone packs, **not** installed by the main UniversalTools web pack:
+
+- **UniversalTools: Python:** Python, Pylance, Python Debugger, Python Environments, Ruff, Jupyter, Mypy
+- **UniversalTools: C/C++:** C/C++, CMake Tools, Makefile Tools, CodeLLDB
+- **UniversalTools: Rust:** rust-analyzer, CodeLLDB, Even Better TOML, Dependi
+- **UniversalTools: Dart & Flutter:** Dart, Flutter
+- **UniversalTools: Java & Kotlin:** Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains
+- **UniversalTools: Mobile:** Expo Tools, React Native Tools
+- **UniversalTools: Go:** Go
+
+### Changed
+
+- **New icons:** every pack now has its own icon on a coloured tile: a `</>` code icon on yellow for UniversalTools, a toolbox for Everyday Tools, a globe for Web Core, and the language or framework logo, in its brand colour, for the other packs. Icons come from Simple Icons (CC0), Lucide (ISC) and the official C++ logo, and each is scaled by its outline so the spacing is the same on every icon.
+- **Check Pack Health** now groups leftover extensions by why they were dropped, and says clearly that the Python, C/C++, Java and React Native extensions are not deprecated.
+
 ## [4.0.0]
 
 A clean-up release: deprecated and unmaintained extensions are removed, and modern replacements are added.

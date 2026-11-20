@@ -1,0 +1,48 @@
+{
+    "name": "universaltools-java-kotlin",
+    "displayName": "UniversalTools: Java & Kotlin",
+    "description": "Java language support, debugging, tests, Maven, Gradle and project management, plus the official Kotlin extension by JetBrains.",
+    "version": "4.2.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/java-kotlin#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/java-kotlin"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "java",
+        "kotlin",
+        "maven",
+        "gradle",
+        "jvm"
+    ],
+    "extensionPack": [
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-dependency",
+        "JetBrains.kotlin-server"
+    ]
+}

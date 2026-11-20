@@ -35,7 +35,9 @@
         "DavidAnson.vscode-markdownlint",
         "jack89ita.open-file-from-path",
         "jock.svg",
-        "kisstkondoros.vscode-gutter-preview"
+        "kisstkondoros.vscode-gutter-preview",
+        "ms-edgedevtools.vscode-edge-devtools",
+        "MS-vsliveshare.vsliveshare"
     ],
     "universaltools.universaltools-html-css": [
         "formulahendry.auto-close-tag",
@@ -62,7 +64,9 @@
         "astro-build.astro-vscode",
         "unifiedjs.vscode-mdx",
         "burkeholland.simple-react-snippets",
-        "razgraf.react-on-the-fly"
+        "razgraf.react-on-the-fly",
+        "antfu.slidev",
+        "tauri-apps.tauri-vscode"
     ],
     "universaltools.universaltools-quasar": [
         "Vue.volar",
@@ -77,6 +81,9 @@
         "madprops.when-did-i-start-working",
         "lacroixdavid1.vscode-format-context-menu",
         "PKief.material-icon-theme",
-        "ahmadawais.shades-of-purple"
+        "ahmadawais.shades-of-purple",
+        "formulahendry.code-runner",
+        "nguyenngoclong.terminal-keeper",
+        "tomoki1207.pdf"
     ]
 }

@@ -1,8 +1,8 @@
 {
     "name": "universaltools-frameworks",
     "displayName": "UniversalTools: Frameworks",
-    "description": "Official tooling for Vue, Svelte, Astro and MDX, plus React snippets and refactoring.",
-    "version": "4.0.0",
+    "description": "Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.",
+    "version": "4.2.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",
@@ -35,7 +35,9 @@
         "astro",
         "mdx",
         "react",
-        "snippets"
+        "snippets",
+        "slidev",
+        "tauri"
     ],
     "extensionPack": [
         "Vue.volar",
@@ -43,6 +45,8 @@
         "astro-build.astro-vscode",
         "unifiedjs.vscode-mdx",
         "burkeholland.simple-react-snippets",
-        "razgraf.react-on-the-fly"
+        "razgraf.react-on-the-fly",
+        "antfu.slidev",
+        "tauri-apps.tauri-vscode"
     ]
 }

@@ -21,13 +21,27 @@ UniversalTools installs five smaller packs. Install any of them on its own if yo
 
 | Pack | What it contains |
 |---|---|
-| [UniversalTools: Web Core](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-web-core) | ESLint, Prettier, Biome, Oxc, EditorConfig · GitLens, GitHub Pull Requests, GitHub Actions · Live Preview, Live Server, Open in Browser, Firefox Debugger · Vitest, Playwright · npm and Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv · Prisma, Container Tools, YAML, TOML, XML · Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path, SVG, Image preview |
+| [UniversalTools: Web Core](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-web-core) | ESLint, Prettier, Biome, Oxc, EditorConfig · GitLens, GitHub Pull Requests, GitHub Actions · Live Preview, Live Server, Open in Browser, Firefox Debugger, Microsoft Edge Tools · Live Share · Vitest, Playwright · npm and Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv · Prisma, Container Tools, YAML, TOML, XML · Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path, SVG, Image preview |
 | [UniversalTools: HTML & CSS](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-html-css) | Auto Close Tag, Highlight Matching Tag, Split HTML Attributes, Emmet Live · Tailwind CSS, UnoCSS, PostCSS, Stylelint · CSS IntelliSense for HTML, CSS Peek, Some Sass, Sass (indented), Stylus, Live Sass Compiler, Color Highlight, HTML to CSS (two) |
-| [UniversalTools: Frameworks](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-frameworks) | Vue - Official, Svelte, Astro, MDX, Simple React Snippets, React on the fly |
+| [UniversalTools: Frameworks](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-frameworks) | Vue - Official, Svelte, Astro, MDX, Simple React Snippets, React on the fly, Slidev, Tauri |
 | [UniversalTools: Quasar](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-quasar) | Vue - Official, Common Intellisense (Quasar 2 components), Quasar IntelliSense (Quasar CSS classes) |
-| [UniversalTools: Everyday Tools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-everyday-tools) | CodeSnap, Google Translate, Random Everything, DateTime, When Did I Start Working, Format in Context Menus · Material Icon Theme, Shades of Purple theme |
+| [UniversalTools: Everyday Tools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-everyday-tools) | CodeSnap, Google Translate, Code Runner, Terminal Keeper, PDF viewer, Random Everything, DateTime, When Did I Start Working, Format in Context Menus · Material Icon Theme, Shades of Purple theme |
 
 The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
+
+## Language packs
+
+Separate packs for other languages. The main UniversalTools pack does **not** install these; install the ones you need.
+
+| Pack | What it contains |
+|---|---|
+| [UniversalTools: Python](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-python) | Python, Pylance, Python Debugger, Python Environments, Ruff, Jupyter, Mypy |
+| [UniversalTools: C/C++](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-cpp) | C/C++, CMake Tools, Makefile Tools, CodeLLDB |
+| [UniversalTools: Rust](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-rust) | rust-analyzer, CodeLLDB, Even Better TOML, Dependi |
+| [UniversalTools: Dart & Flutter](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-dart-flutter) | Dart, Flutter |
+| [UniversalTools: Java & Kotlin](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-java-kotlin) | Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains |
+| [UniversalTools: Mobile](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-mobile) | Expo Tools, React Native Tools |
+| [UniversalTools: Go](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-go) | Go |
 
 ## Upgrading from 3.x
 
@@ -188,7 +202,7 @@ Run `npm ci` once, then:
 | `npm run test:install` | Same, but downloads a fresh VS Code first (used in CI). |
 | `npm run test:integration` | Starts a downloaded VS Code with the extension loaded and tests the commands, the walkthrough and the default settings. |
 | `npm test` | All of the above, in order. |
-| `npm run icon` | Redraws `icon.png` and every sub-pack icon (512×512) from `scripts/make-icon.py`; needs Python with Pillow. The Marketplace does not accept SVG icons. |
+| `npm run icon` | Redraws every icon (main pack and sub-packs, 512×512) from the `accent` colour and white `icon` in `packs/packs.json`, using [Simple Icons](https://simpleicons.org) (CC0) and [Lucide](https://lucide.dev) (ISC). The Marketplace does not accept SVG icons, so they are rendered to PNG. |
 | `npm run publish:openvsx-first` | One-time first upload to Open VSX with a token; see [RELEASING.md](RELEASING.md). |
 
 The code is plain JavaScript with no build step: [extension.js](extension.js) holds the commands, [src/dropped.js](src/dropped.js) the list of extensions dropped in 4.0, and [walkthrough/](walkthrough/) the Get Started pages.

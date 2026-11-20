@@ -1,0 +1,41 @@
+{
+    "name": "universaltools-dart-flutter",
+    "displayName": "UniversalTools: Dart & Flutter",
+    "description": "Official Dart and Flutter support.",
+    "version": "4.2.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/dart-flutter#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/dart-flutter"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "dart",
+        "flutter",
+        "mobile"
+    ],
+    "extensionPack": [
+        "Dart-Code.dart-code",
+        "Dart-Code.flutter"
+    ]
+}
