@@ -40,7 +40,8 @@ Version 4.0.0 removed many extensions (see the [changelog](CHANGELOG.md)). VS Co
 
 The easiest way: run **UniversalTools: Remove Extensions Dropped in 4.0** from the Command Palette (**Ctrl+Shift+P**) and untick anything you want to keep.
 
-Or remove all of them at once in PowerShell:
+<details>
+<summary>Or remove all of them at once in PowerShell</summary>
 
 ```powershell
 @(
@@ -63,6 +64,8 @@ Or remove all of them at once in PowerShell:
   'vscode-icons-team.vscode-icons'
 ) | ForEach-Object { code --uninstall-extension $_ }
 ```
+
+</details>
 
 Java, Python/Jupyter, C++ and React Native extensions were moved out of this pack. Keep them installed if you use those languages.
 
