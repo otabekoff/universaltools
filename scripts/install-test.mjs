@@ -1,5 +1,5 @@
-// Installs the built .vsix into a throwaway VS Code profile and checks that every
-// extension listed in "extensionPack" was installed alongside it.
+// Installs every built .vsix from dist/ (sub-packs first, then the main pack) into a throwaway
+// VS Code profile and checks that every pack and every extension they list was installed.
 //
 // Usage:
 //   node scripts/install-test.mjs                 download VS Code stable (used in CI)
@@ -9,15 +9,16 @@
 // --extensions-dir point at a temporary folder that is deleted afterwards.
 
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, existsSync } from "node:fs";
+import { mkdtempSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
+import { root, rootPkg, packDefs, packId, leafExtensions, vsixFiles } from "./packs.mjs";
 
-const root = resolve(import.meta.dirname, "..");
-const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
-const vsix = join(root, `${pkg.name}-${pkg.version}.vsix`);
-if (!existsSync(vsix)) {
-  console.error(`Missing ${vsix}. Run "npm run package" first.`);
+const pkg = rootPkg();
+const files = vsixFiles().map((f) => join(root, "dist", f));
+const absent = files.filter((f) => !existsSync(f));
+if (absent.length) {
+  console.error(`Missing:\n  ${absent.join("\n  ")}\nRun "npm run package" first.`);
   process.exit(1);
 }
 
@@ -42,20 +43,21 @@ const run = (...args) => {
 };
 
 try {
-  console.log(`Installing ${vsix} into ${tmp} ...`);
-  run("--install-extension", vsix);
+  for (const vsix of files) {
+    console.log(`Installing ${vsix} ...`);
+    run("--install-extension", vsix);
+  }
   const installed = new Set(run("--list-extensions").split(/\r?\n/).filter(Boolean).map((s) => s.toLowerCase()));
 
-  const self = `${pkg.publisher}.${pkg.name}`.toLowerCase();
-  const missing = pkg.extensionPack.filter((id) => !installed.has(id.toLowerCase()));
-  if (!installed.has(self)) missing.unshift(`${self} (the pack itself)`);
+  const expected = [`${pkg.publisher}.${pkg.name}`, ...packDefs().map((def) => packId(def)), ...leafExtensions()];
+  const missing = expected.filter((id) => !installed.has(id.toLowerCase()));
 
-  console.log(`Installed ${installed.size} extensions; pack lists ${pkg.extensionPack.length}.`);
+  console.log(`Installed ${installed.size} extensions; expected ${expected.length} (main pack, ${packDefs().length} sub-packs, ${leafExtensions().length} extensions).`);
   if (missing.length) {
     console.error(`Missing after install:\n  ${missing.join("\n  ")}`);
     process.exitCode = 1;
   } else {
-    console.log("OK: the pack and every extension in it installed.");
+    console.log("OK: every pack and every extension in them installed.");
   }
 } finally {
   rmSync(tmp, { recursive: true, force: true });

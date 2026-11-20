@@ -14,7 +14,9 @@ Every removal below was checked against the VS Code Marketplace (its deprecation
 
 - New icon (512×512 PNG).
 - Requires VS Code 1.90 or newer (was 1.44).
-- The pack is now focused on web development plus everyday tools: 97 → 67 extensions.
+- The pack is now focused on web development plus everyday tools: 97 → 69 extensions.
+- **Split into five packs** that UniversalTools installs together, each also available on its own: **Web Core**, **HTML & CSS**, **Frameworks**, **Quasar** and **Everyday Tools**.
+- **New Quasar pack** for Quasar 2: `simonhe.common-intellisense` (Quasar 2 component IntelliSense) and `hossaini.quasar-intellisense` (Quasar CSS classes), with `Vue.volar`.
 - The pack is now a small extension too:
   - **Recommended settings as defaults:** `editor.linkedEditing`, `editor.guides.bracketPairs: "active"`, Prettier for CSS/SCSS/Less and Red Hat XML for XML. Your own settings still win.
   - **Get Started walkthrough**, shown after install.

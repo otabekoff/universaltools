@@ -2,16 +2,18 @@
 
 Releases are automatic. When a pull request that changes `"version"` in `package.json` is merged into `master`, the [Release workflow](.github/workflows/release.yml):
 
-1. checks every extension in the pack against the Marketplace (`npm run verify`),
-2. builds the `.vsix` and installs it into a clean VS Code to check every extension arrives,
-3. creates the GitHub release `vX.Y.Z` with the `.vsix` attached and the matching `CHANGELOG.md` section as notes,
-4. publishes to the VS Code Marketplace, and to Open VSX if enabled.
+1. checks that `packs/` matches `packs/packs.json` and every extension against the Marketplace,
+2. builds six `.vsix` files into `dist/` (the five sub-packs and the main pack), installs them into a clean VS Code and runs the integration tests,
+3. creates the GitHub release `vX.Y.Z` with all six `.vsix` files attached and the matching `CHANGELOG.md` section as notes,
+4. publishes to the VS Code Marketplace, and to Open VSX if enabled: sub-packs first, then the main pack, because the main pack installs them.
+
+All six extensions share the version in the root `package.json`; `npm run sync` copies it into `packs/`.
 
 Merges that do not change the version do nothing. Pushing a tag `vX.Y.Z` that matches `package.json` also releases.
 
 ## Making a release
 
-1. In your branch, bump the version: `npm version minor --no-git-tag-version` (or `patch` / `major`).
+1. In your branch, bump the version: `npm version minor --no-git-tag-version` (or `patch` / `major`), then `npm run sync`.
 2. Add a `## [X.Y.Z]` section at the top of `CHANGELOG.md`.
 3. Open a PR. CI runs the same checks without publishing.
 4. Merge it. The release follows within a few minutes; watch it under **Actions → Release**.
@@ -54,6 +56,8 @@ Azure DevOps retires global Personal Access Tokens on **December 1, 2026**. The 
 
 The repository is public, so the policy has no 48-hour activation deadline; it activates the first time the Release workflow publishes.
 
+The policy belongs to the publisher, so the one policy is meant to cover all six extensions. The five sub-packs are **new** extensions; the Marketplace docs don't say whether a Trusted Publishing token may create a new extension. If the first release fails on a sub-pack with a permissions error, publish that sub-pack once by hand (see the end of this file), then re-run the job.
+
 ### 2. GitHub environment
 
 The publishing jobs run in the `marketplace` environment, which only `master` and `v*` tags may deploy to. It is created with:
@@ -71,17 +75,20 @@ To approve every publish by hand, add yourself as a required reviewer under **Se
 
 ### 3. Open VSX (optional)
 
-Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors. It also supports Trusted Publishing, but only for an extension that **already exists** there, so the very first version is published once with a token. Source: [Open VSX Trusted Publishing](https://github.com/eclipse/openvsx/wiki/Trusted-Publishing).
+Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors. It also supports Trusted Publishing, but only for an extension that **already exists** there, so the very first version of each of the six extensions is published once with a token. Each extension then needs its own Trusted Publisher registration. Source: [Open VSX Trusted Publishing](https://github.com/eclipse/openvsx/wiki/Trusted-Publishing).
+
+Note: 12 of the 69 extensions in the packs are not on Open VSX (for example Simple React Snippets, Google Translate, Random Everything), so editors that use Open VSX cannot install those.
 
 1. **Publisher Agreement:** on open-vsx.org, open **Profile**, choose **Log in with Eclipse** (create an eclipse.org account with the same GitHub username if needed), then **Show Publisher Agreement** → **Agree**.
 2. **Namespace:** in user settings, click **+** next to *Namespaces* and create `universaltools`, all lower-case. It must match `"publisher"` in `package.json` exactly, or Trusted Publishing is rejected.
 3. **Ownership:** creating a namespace does not make you its verified owner, and Trusted Publishing requires an owner. Open an issue at [EclipseFdn/open-vsx.org](https://github.com/EclipseFdn/open-vsx.org/issues/new/choose) with the namespace template. Because `universaltools` is also your VS Code Marketplace publisher, include a link showing you control it (the [Marketplace page](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools) and this repository).
-4. **First publish, once, with a token:** under **Access Tokens**, generate a token, then from this folder:
-   ```sh
-   npx ovsx publish universaltools-4.0.0.vsix -p <token>
+4. **First publish, once, with a token:** under **Access Tokens**, generate a token, then in PowerShell from this folder:
+   ```powershell
+   npm run package
+   $env:OVSX_PAT = "<token>"; npm run publish:openvsx-first; Remove-Item Env:OVSX_PAT
    ```
-   Delete the token afterwards; it is not needed again.
-5. **Trusted Publisher:** under **Trusted Publishers**, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
+   This uploads the five sub-packs, then the main pack. Delete the token on open-vsx.org afterwards; it is not needed again.
+5. **Trusted Publishers:** under **Trusted Publishers**, create **one registration per extension** (six in total: `universaltools`, `universaltools-web-core`, `universaltools-html-css`, `universaltools-frameworks`, `universaltools-quasar`, `universaltools-everyday-tools`). For each, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
 
    | Field | Enter |
    |---|---|
@@ -101,7 +108,9 @@ From the next release on, the workflow publishes to Open VSX with `ovsx publish 
 
 ```sh
 npm ci
-npm test                   # verify + package + install test
+npm test                   # sync check + verify + package + install test + integration tests
 npx vsce login universaltools
-npx vsce publish --packagePath universaltools-X.Y.Z.vsix
+# sub-packs first, then the main pack
+npx vsce publish --skip-duplicate --packagePath dist/universaltools-web-core-X.Y.Z.vsix   # ...and the other sub-packs
+npx vsce publish --packagePath dist/universaltools-X.Y.Z.vsix
 ```

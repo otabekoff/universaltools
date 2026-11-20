@@ -22,9 +22,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Check the sub-packs match packs/packs.json
+        run: npm run sync:check
       - name: Check every extension against the Marketplace
         run: npm run verify
-      - name: Build the .vsix
+      - name: Build every .vsix (sub-packs and main pack)
         run: npm run package
       - name: Install the .vsix into a clean VS Code and check every extension arrived
         run: npm run test:install
@@ -33,5 +35,5 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: vsix
-          path: "*.vsix"
+          path: dist/*.vsix
           retention-days: 14

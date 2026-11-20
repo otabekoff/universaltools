@@ -67,13 +67,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - name: Check the sub-packs match packs/packs.json
+        if: steps.meta.outputs.release == 'true'
+        run: npm run sync:check
       - name: Check every extension against the Marketplace
         if: steps.meta.outputs.release == 'true'
         run: npm run verify
-      - name: Build the .vsix
+      - name: Build every .vsix (sub-packs and main pack)
         if: steps.meta.outputs.release == 'true'
         run: npm run package -- ${{ steps.meta.outputs.pre-release }}
-      - name: Install the .vsix into a clean VS Code
+      - name: Install every .vsix into a clean VS Code
         if: steps.meta.outputs.release == 'true'
         run: npm run test:install
       - name: Run the commands, walkthrough and default settings inside VS Code
@@ -83,7 +86,7 @@ jobs:
         if: steps.meta.outputs.release == 'true'
         with:
           name: vsix
-          path: "*.vsix"
+          path: dist/*.vsix
 
   github-release:
     needs: build
@@ -96,6 +99,7 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: vsix
+          path: dist
       - name: Create GitHub release with notes from CHANGELOG.md
         run: |
           v="${{ needs.build.outputs.version }}"
@@ -105,7 +109,7 @@ jobs:
             on { print }
           ' CHANGELOG.md > notes.md
           [ -s notes.md ] || echo "See CHANGELOG.md." > notes.md
-          gh release create "v$v" ./*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md ${PRE_RELEASE:+--prerelease}
+          gh release create "v$v" dist/*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md ${PRE_RELEASE:+--prerelease}
         env:
           GH_TOKEN: ${{ github.token }}
           PRE_RELEASE: ${{ needs.build.outputs.pre-release }}
@@ -127,8 +131,13 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: vsix
-      - name: Publish to the VS Code Marketplace
-        run: npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --packagePath ./*.vsix
+          path: dist
+      - name: Publish to the VS Code Marketplace (sub-packs first, then the main pack)
+        run: |
+          for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
+            echo "Publishing $f"
+            npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+          done
 
   open-vsx:
     # Optional: set the repository variable PUBLISH_OPENVSX=true to enable (after the one-time setup in RELEASING.md).
@@ -150,5 +159,10 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: vsix
-      - name: Publish to Open VSX
-        run: npx ovsx publish --trusted-publishing ${{ needs.build.outputs.pre-release }} --packagePath ./*.vsix
+          path: dist
+      - name: Publish to Open VSX (sub-packs first, then the main pack)
+        run: |
+          for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
+            echo "Publishing $f"
+            npx ovsx publish --trusted-publishing ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+          done

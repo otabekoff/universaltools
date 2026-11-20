@@ -3,3 +3,4 @@ node_modules/
 *.vsix
 __pycache__/
 installed-extensions.txt
+dist/

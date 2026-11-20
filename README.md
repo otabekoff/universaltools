@@ -17,22 +17,17 @@ Besides installing the extensions, UniversalTools:
 
 ## What's included
 
-| Area | Extensions |
-|---|---|
-| Frameworks | Vue - Official (`Vue.volar`), Svelte (`svelte.svelte-vscode`), Astro (`astro-build.astro-vscode`), MDX (`unifiedjs.vscode-mdx`), Simple React Snippets, React on the fly |
-| Lint / format | ESLint, Prettier, Biome, Oxc, EditorConfig, Stylelint |
-| CSS | Tailwind CSS IntelliSense, UnoCSS, PostCSS, CSS IntelliSense for HTML (`ecmel.vscode-html-css`), CSS Peek, Some Sass, Sass (indented), Stylus, Live Sass Compiler, Color Highlight, HTML to CSS, HTML-to-CSS autocompletion |
-| HTML | Auto Close Tag, Highlight Matching Tag, Split HTML Attributes, Emmet Live |
-| Preview / run | Live Preview, Live Server, Open in Browser, Firefox Debugger, SVG (preview and editing), Image preview in gutter |
-| Testing | Vitest, Playwright |
-| Node / npm | npm IntelliSense, Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv |
-| Git / GitHub | GitLens, GitHub Pull Requests, GitHub Actions (VS Code's built-in Source Control Graph replaces Git History) |
-| Tooling | Prisma, Container Tools, YAML, Even Better TOML, XML (Red Hat) |
-| Quality of life | Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path |
-| Everyday tools | CodeSnap (code screenshots), Google Translate, Random Everything, DateTime (status bar clock), When Did I Start Working, Format in Context Menus |
-| Look | Shades of Purple theme, Material Icon Theme |
+UniversalTools installs five smaller packs. Install any of them on its own if you only need part of the set.
 
-The full list of IDs is in [package.json](package.json) under `extensionPack`.
+| Pack | What it contains |
+|---|---|
+| [UniversalTools: Web Core](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-web-core) | ESLint, Prettier, Biome, Oxc, EditorConfig · GitLens, GitHub Pull Requests, GitHub Actions · Live Preview, Live Server, Open in Browser, Firefox Debugger · Vitest, Playwright · npm and Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv · Prisma, Container Tools, YAML, TOML, XML · Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path, SVG, Image preview |
+| [UniversalTools: HTML & CSS](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-html-css) | Auto Close Tag, Highlight Matching Tag, Split HTML Attributes, Emmet Live · Tailwind CSS, UnoCSS, PostCSS, Stylelint · CSS IntelliSense for HTML, CSS Peek, Some Sass, Sass (indented), Stylus, Live Sass Compiler, Color Highlight, HTML to CSS (two) |
+| [UniversalTools: Frameworks](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-frameworks) | Vue - Official, Svelte, Astro, MDX, Simple React Snippets, React on the fly |
+| [UniversalTools: Quasar](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-quasar) | Vue - Official, Common Intellisense (Quasar 2 components), Quasar IntelliSense (Quasar CSS classes) |
+| [UniversalTools: Everyday Tools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-everyday-tools) | CodeSnap, Google Translate, Random Everything, DateTime, When Did I Start Working, Format in Context Menus · Material Icon Theme, Shades of Purple theme |
+
+The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
 
 ## Upgrading from 3.x
 
@@ -185,14 +180,16 @@ Run `npm ci` once, then:
 
 | Command | What it does |
 |---|---|
+| `npm run sync` | Regenerates `packs/<pack>/` and the main pack's list from `packs/packs.json`. Edit that file to add or remove extensions, then run this. `npm run sync:check` only reports drift (used in CI). |
 | `npm run verify` | Checks every extension in the pack against the Marketplace. Fails if one is missing, unpublished, deprecated or listed twice; warns if one has not been updated for 3 years. |
 | `npm run verify:all` | Same, and prints every extension with its last update date. |
-| `npm run package` | Builds `universaltools-<version>.vsix`. |
-| `npm run test:install:local` | Installs the `.vsix` into a throwaway profile of your own VS Code and checks every extension arrives. Your normal profile is not touched. |
+| `npm run package` | Builds every sub-pack and the main pack into `dist/`. |
+| `npm run test:install:local` | Installs every `.vsix` into a throwaway profile of your own VS Code and checks every extension arrives. Your normal profile is not touched. |
 | `npm run test:install` | Same, but downloads a fresh VS Code first (used in CI). |
 | `npm run test:integration` | Starts a downloaded VS Code with the extension loaded and tests the commands, the walkthrough and the default settings. |
 | `npm test` | All of the above, in order. |
-| `npm run icon` | Redraws `icon.png` (512×512) from `scripts/make-icon.py`; needs Python with Pillow. The Marketplace does not accept SVG icons. |
+| `npm run icon` | Redraws `icon.png` and every sub-pack icon (512×512) from `scripts/make-icon.py`; needs Python with Pillow. The Marketplace does not accept SVG icons. |
+| `npm run publish:openvsx-first` | One-time first upload to Open VSX with a token; see [RELEASING.md](RELEASING.md). |
 
 The code is plain JavaScript with no build step: [extension.js](extension.js) holds the commands, [src/dropped.js](src/dropped.js) the list of extensions dropped in 4.0, and [walkthrough/](walkthrough/) the Get Started pages.
 

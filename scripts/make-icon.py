@@ -1,4 +1,6 @@
-"""Generate the UniversalTools icon: a gradient badge with a 2x2 'pack' of tiles,
+"""Usage: python make-icon.py OUT.png [LIFT] [ACCENT_HEX]
+
+Generate the UniversalTools icon: a gradient badge with a 2x2 'pack' of tiles,
 one tile lifted out in accent colour carrying a </> glyph."""
 import sys
 from PIL import Image, ImageDraw, ImageFilter
@@ -6,6 +8,9 @@ from PIL import Image, ImageDraw, ImageFilter
 S = 1024  # drawing canvas; downsampled to 512 for smooth edges
 OUT = sys.argv[1] if len(sys.argv) > 1 else "icon.png"
 LIFT = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+# accent colour of the </> tile, e.g. "#FBBF24"; sub-packs each use their own
+ACCENT = sys.argv[3] if len(sys.argv) > 3 else "#FBBF24"
+ACCENT_RGBA = tuple(int(ACCENT.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4)) + (255,)
 
 
 def lerp(a, b, t):
@@ -50,7 +55,7 @@ for (x, y) in pos.values():
     d.rounded_rectangle((x, y, x + tile, y + tile), radius=r, fill=(255, 255, 255, 240))
 
 ax, ay = acc
-d.rounded_rectangle((ax, ay, ax + tile, ay + tile), radius=r, fill=(251, 191, 36, 255))
+d.rounded_rectangle((ax, ay, ax + tile, ay + tile), radius=r, fill=ACCENT_RGBA)
 
 # </> glyph on accent tile: thin strokes, clear gaps between the three parts
 ink, w = (30, 27, 75), 17

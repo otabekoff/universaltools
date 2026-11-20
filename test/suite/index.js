@@ -6,6 +6,12 @@ const vscode = require("vscode");
 
 const EXT_ID = "universaltools.universaltools";
 
+// What UniversalTools installs: its sub-packs, then every extension they list (once, case-insensitive).
+const packContents = require("../../src/pack-contents.json");
+const extensionPack = [
+  ...new Map([...Object.keys(packContents), ...Object.values(packContents).flat()].map((id) => [id.toLowerCase(), id])).values(),
+];
+
 const tests = {
   async "extension is present and activates"() {
     const ext = vscode.extensions.getExtension(EXT_ID);
@@ -37,7 +43,6 @@ const tests = {
   },
 
   async "health check reports every pack extension as missing in a clean profile"() {
-    const { extensionPack } = vscode.extensions.getExtension(EXT_ID).packageJSON;
     const result = await vscode.commands.executeCommand("universaltools.checkHealth", { silent: true });
     assert.equal(result.total, extensionPack.length);
     assert.deepEqual(result.missing, extensionPack);
@@ -50,10 +55,14 @@ const tests = {
   },
 
   async "dropped list and pack list do not overlap"() {
-    const { extensionPack } = vscode.extensions.getExtension(EXT_ID).packageJSON;
     const dropped = require("../../src/dropped").flatMap((g) => g.ids.map((id) => id.toLowerCase()));
     const overlap = extensionPack.filter((id) => dropped.includes(id.toLowerCase()));
     assert.deepEqual(overlap, [], "an extension is both in the pack and in the dropped list");
+  },
+
+  async "main pack installs exactly the sub-packs"() {
+    const { extensionPack: listed } = vscode.extensions.getExtension(EXT_ID).packageJSON;
+    assert.deepEqual(listed, Object.keys(packContents));
   },
 
   async "walkthrough is contributed with its markdown pages"() {

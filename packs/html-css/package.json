@@ -1,0 +1,61 @@
+{
+    "name": "universaltools-html-css",
+    "displayName": "UniversalTools: HTML & CSS",
+    "description": "HTML tags, Tailwind CSS, UnoCSS, Sass, PostCSS, Stylus, Stylelint and CSS helpers.",
+    "version": "4.0.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/html-css#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/html-css"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "html",
+        "css",
+        "tailwind",
+        "unocss",
+        "sass",
+        "scss",
+        "postcss",
+        "stylelint"
+    ],
+    "extensionPack": [
+        "formulahendry.auto-close-tag",
+        "vincaslt.highlight-matching-tag",
+        "dannyconnell.split-html-attributes",
+        "ysemeniuk.emmet-live",
+        "bradlc.vscode-tailwindcss",
+        "antfu.unocss",
+        "csstools.postcss",
+        "ecmel.vscode-html-css",
+        "pranaygp.vscode-css-peek",
+        "SomewhatStationery.some-sass",
+        "syler.sass-indented",
+        "sysoev.language-stylus",
+        "glenn2223.live-sass",
+        "naumovs.color-highlight",
+        "neptunedesign.vs-html-to-css",
+        "solnurkarim.html-to-css-autocompletion",
+        "stylelint.vscode-stylelint"
+    ]
+}

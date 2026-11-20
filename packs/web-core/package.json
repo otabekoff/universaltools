@@ -1,0 +1,80 @@
+{
+    "name": "universaltools-web-core",
+    "displayName": "UniversalTools: Web Core",
+    "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
+    "version": "4.0.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/web-core#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/web-core"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "web development",
+        "eslint",
+        "prettier",
+        "biome",
+        "gitlens",
+        "vitest",
+        "playwright",
+        "live server"
+    ],
+    "extensionPack": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "biomejs.biome",
+        "oxc.oxc-vscode",
+        "EditorConfig.EditorConfig",
+        "eamodio.gitlens",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.vscode-github-actions",
+        "ms-vscode.live-server",
+        "ritwickdey.LiveServer",
+        "techer.open-in-browser",
+        "firefox-devtools.vscode-firefox-debug",
+        "vitest.explorer",
+        "ms-playwright.playwright",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "dennisvhest.npm-browser",
+        "wix.vscode-import-cost",
+        "humao.rest-client",
+        "dotenv.dotenv-vscode",
+        "Prisma.prisma",
+        "ms-azuretools.vscode-containers",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-xml",
+        "usernamehw.errorlens",
+        "yoavbls.pretty-ts-errors",
+        "streetsidesoftware.code-spell-checker",
+        "FanaticPythoner.better-todo-tree",
+        "Lokalise.i18n-ally",
+        "antfu.iconify",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "jack89ita.open-file-from-path",
+        "jock.svg",
+        "kisstkondoros.vscode-gutter-preview"
+    ]
+}
