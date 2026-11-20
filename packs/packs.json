@@ -1,16 +1,17 @@
 {
-    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone language packs that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide); run `npm run icon` after changing them.",
+    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone language packs that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide, custom:<name> or file:<name> from scripts/icons); \"iconColor\" overrides the default white; an accent like \"#E34F26>#1572B6\" is a diagonal gradient; run `npm run icon` after changing them.",
     "main": {
-        "accent": "#EA580C",
-        "icon": "lucide:toolbox"
+        "accent": "#FBBF24",
+        "icon": "lucide:code-xml",
+        "iconColor": "#1E1B4B"
     },
     "packs": [
         {
             "dir": "web-core",
             "displayName": "UniversalTools: Web Core",
             "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
-            "accent": "#DC2626",
-            "icon": "lucide:globe",
+            "accent": "#577BFF",
+            "icon": "custom:globe",
             "keywords": [
                 "web development",
                 "eslint",
@@ -68,7 +69,7 @@
             "dir": "html-css",
             "displayName": "UniversalTools: HTML & CSS",
             "description": "HTML tags, Tailwind CSS, UnoCSS, Sass, PostCSS, Stylus, Stylelint and CSS helpers.",
-            "accent": "#7C2D12",
+            "accent": "#E34F26",
             "icon": "si:html5",
             "keywords": [
                 "html",
@@ -104,8 +105,8 @@
             "dir": "frameworks",
             "displayName": "UniversalTools: Frameworks",
             "description": "Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.",
-            "accent": "#16A34A",
-            "icon": "lucide:layers",
+            "accent": "#374151",
+            "icon": "lucide:component",
             "keywords": [
                 "vue",
                 "svelte",
@@ -131,7 +132,7 @@
             "dir": "quasar",
             "displayName": "UniversalTools: Quasar",
             "description": "Vue - Official plus IntelliSense for Quasar 2 components and Quasar CSS classes.",
-            "accent": "#9D174D",
+            "accent": "#1976D2",
             "icon": "si:quasar",
             "keywords": [
                 "quasar",
@@ -149,8 +150,8 @@
             "dir": "everyday-tools",
             "displayName": "UniversalTools: Everyday Tools",
             "description": "Code screenshots, translation, a code runner, saved terminal sessions, a PDF viewer, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
-            "accent": "#DB2777",
-            "icon": "lucide:sparkles",
+            "accent": "#7CB518",
+            "icon": "lucide:toolbox",
             "keywords": [
                 "codesnap",
                 "screenshot",
@@ -181,7 +182,7 @@
             "dir": "python",
             "displayName": "UniversalTools: Python",
             "description": "Python language support, Pylance, debugging, environments, Ruff linting and formatting, Jupyter notebooks and Mypy type checking.",
-            "accent": "#A16207",
+            "accent": "#3776AB",
             "icon": "si:python",
             "includeInMain": false,
             "keywords": [
@@ -206,8 +207,8 @@
             "dir": "cpp",
             "displayName": "UniversalTools: C/C++",
             "description": "C/C++ IntelliSense and debugging, CMake and Makefile projects, and the CodeLLDB debugger.",
-            "accent": "#78716C",
-            "icon": "si:cplusplus",
+            "accent": "#00599C",
+            "icon": "file:cpp-mark",
             "includeInMain": false,
             "keywords": [
                 "c",
@@ -249,7 +250,7 @@
             "dir": "dart-flutter",
             "displayName": "UniversalTools: Dart & Flutter",
             "description": "Official Dart and Flutter support.",
-            "accent": "#4D7C0F",
+            "accent": "#0AA0E6",
             "icon": "si:flutter",
             "includeInMain": false,
             "keywords": [
@@ -266,7 +267,7 @@
             "dir": "java-kotlin",
             "displayName": "UniversalTools: Java & Kotlin",
             "description": "Java language support, debugging, tests, Maven, Gradle and project management, plus the official Kotlin extension by JetBrains.",
-            "accent": "#701A75",
+            "accent": "#7F52FF",
             "icon": "si:kotlin",
             "includeInMain": false,
             "keywords": [
@@ -290,7 +291,7 @@
             "dir": "mobile",
             "displayName": "UniversalTools: Mobile",
             "description": "React Native and Expo development tools.",
-            "accent": "#166534",
+            "accent": "#0F766E",
             "icon": "si:react",
             "includeInMain": false,
             "keywords": [
@@ -307,7 +308,7 @@
             "dir": "go",
             "displayName": "UniversalTools: Go",
             "description": "Official Go language support.",
-            "accent": "#115E59",
+            "accent": "#0080B0",
             "icon": "si:go",
             "includeInMain": false,
             "keywords": [

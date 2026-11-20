@@ -26,7 +26,7 @@ Standalone packs, **not** installed by the main UniversalTools web pack:
 
 ### Changed
 
-- **New icons:** every pack now shows a flat white icon on its coloured tile (a toolbox for UniversalTools, the language or framework logo for each pack), with 13 tile colours checked to be clearly distinct and readable with white.
+- **New icons:** every pack now has its own icon on a coloured tile: a `</>` code icon on yellow for UniversalTools, a toolbox for Everyday Tools, a globe for Web Core, and the language or framework logo, in its brand colour, for the other packs. Icons come from Simple Icons (CC0), Lucide (ISC) and the official C++ logo, and each is scaled by its outline so the spacing is the same on every icon.
 - **Check Pack Health** now groups leftover extensions by why they were dropped, and says clearly that the Python, C/C++, Java and React Native extensions are not deprecated.
 
 ## [4.0.0]

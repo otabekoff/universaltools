@@ -95,13 +95,13 @@ MIT
   }
 
   const icon = join(dir, "icon.png");
-  if (!check && (redrawIcons || !existsSync(icon))) renderIcon(icon, def.accent, def.icon);
+  if (!check && (redrawIcons || !existsSync(icon))) renderIcon(icon, def.accent, def.icon, def.iconColor);
   if (check && !existsSync(icon)) stale.push(`packs/${def.dir}/icon.png`);
 }
 
 // the main pack's own icon
 const mainIcon = join(root, "icon.png");
-if (!check && (redrawIcons || !existsSync(mainIcon))) renderIcon(mainIcon, mainStyle.accent, mainStyle.icon);
+if (!check && (redrawIcons || !existsSync(mainIcon))) renderIcon(mainIcon, mainStyle.accent, mainStyle.icon, mainStyle.iconColor);
 
 // main pack: installs the sub-packs
 const mainPkg = rootPkg();
