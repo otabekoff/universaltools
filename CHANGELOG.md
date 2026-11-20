@@ -14,9 +14,14 @@ Every removal below was checked against the VS Code Marketplace (its deprecation
 
 - New icon (512×512 PNG).
 - Requires VS Code 1.90 or newer (was 1.44).
-- The pack is now focused on web development: 97 → 61 extensions.
+- The pack is now focused on web development plus everyday tools: 97 → 67 extensions.
+- The pack is now a small extension too:
+  - **Recommended settings as defaults:** `editor.linkedEditing`, `editor.guides.bracketPairs: "active"`, Prettier for CSS/SCSS/Less and Red Hat XML for XML. Your own settings still win.
+  - **Get Started walkthrough**, shown after install.
+  - **UniversalTools: Check Pack Health** and **UniversalTools: Remove Extensions Dropped in 4.0** commands.
+- License holder is now Otabek Sadiridinov.
 - Developer, homepage, issue tracker, keywords and Marketplace banner added to the manifest.
-- New checks: `npm run verify` tests every extension against the Marketplace, and `npm run test:install` installs the built pack into a clean VS Code.
+- New checks: `npm run verify` tests every extension against the Marketplace, `npm run test:install` installs the built pack into a clean VS Code, and `npm run test:integration` tests the commands, walkthrough and defaults inside VS Code.
 - Releases are automated with GitHub Actions and published with Marketplace Trusted Publishing (see RELEASING.md).
 
 ### Removed: deprecated on the Marketplace
@@ -42,7 +47,8 @@ Every removal below was checked against the VS Code Marketplace (its deprecation
 | `octref.vetur` | Its own page points to the new official Vue extension; last updated 2023 | `Vue.volar` |
 | `formulahendry.auto-rename-tag` | Its own page says to use the built-in `editor.linkedEditing` (VS Code 1.44+); last updated 2022 | Built in: `editor.linkedEditing` |
 | `formulahendry.auto-complete-tag` | Only bundles Auto Close Tag and Auto Rename Tag; last updated 2018 | Auto Close Tag stays in the pack; renaming is built in |
-| `wayou.vscode-todo-highlight` | Last updated 2021 | `Gruntfuggly.todo-tree` (already included; it also highlights) |
+| `wayou.vscode-todo-highlight` | Last updated 2021 | `FanaticPythoner.better-todo-tree` (it also highlights) |
+| `Gruntfuggly.todo-tree` | Last updated 2023 | `FanaticPythoner.better-todo-tree`, its maintained fork, which imports existing Todo Tree settings |
 | `aeschli.vscode-css-formatter` | Last updated 2021 | `esbenp.prettier-vscode` (already included; formats CSS, SCSS and Less) |
 | `sibiraj-s.vscode-scss-formatter` | Still maintained, but does the same job as Prettier | `esbenp.prettier-vscode` |
 | `mikeburgh.xml-format` | Last updated 2022 | `redhat.vscode-xml` |
@@ -69,12 +75,12 @@ Covered by `Vue.volar`: `Wscats.vue`, `hollowtree.vue-snippets`, `vaniship.vue-l
 ### Removed: not web development
 
 - **Moved to separate packs (planned):** `redhat.java`, `vscjava.vscode-java-debug`, `vscjava.vscode-java-test`, `ms-python.python`, `ms-python.vscode-pylance`, `ms-toolsai.jupyter`, `ms-toolsai.jupyter-renderers`, `ms-vscode.cpptools`, `msjsdiag.vscode-react-native`.
-- **General utilities:** `helixquar.randomeverything`, `madprops.when-did-i-start-working`, `rid9.datetime`, `lacroixdavid1.vscode-format-context-menu`, `funkyremi.vscode-google-translate`, `adpyke.codesnap`.
 
 ### Kept
 
 These were considered for removal but are still maintained or still needed:
 
+- Everyday tools: `adpyke.codesnap`, `funkyremi.vscode-google-translate`, `helixquar.randomeverything`, `rid9.datetime`, `madprops.when-did-i-start-working`, `lacroixdavid1.vscode-format-context-menu`.
 - `ritwickdey.LiveServer`: updated in 2026.
 - `techer.open-in-browser`: updated in 2026.
 - `formulahendry.auto-close-tag`: VS Code closes tags itself only in HTML, Handlebars and Razor (and JSX/TSX); this extension adds it for Vue, XML, PHP and others.
@@ -85,7 +91,7 @@ These were considered for removal but are still maintained or still needed:
 - **Lint / format:** `biomejs.biome`, `oxc.oxc-vscode`, `EditorConfig.EditorConfig`, `stylelint.vscode-stylelint`
 - **CSS:** `bradlc.vscode-tailwindcss`, `antfu.unocss`, `csstools.postcss`, `ecmel.vscode-html-css`
 - **Testing:** `vitest.explorer`, `ms-playwright.playwright`
-- **Quality of life:** `usernamehw.errorlens`, `yoavbls.pretty-ts-errors`, `streetsidesoftware.code-spell-checker`, `dotenv.dotenv-vscode`, `antfu.iconify`, `Lokalise.i18n-ally`
+- **Quality of life:** `usernamehw.errorlens`, `yoavbls.pretty-ts-errors`, `streetsidesoftware.code-spell-checker`, `dotenv.dotenv-vscode`, `antfu.iconify`, `Lokalise.i18n-ally`, `FanaticPythoner.better-todo-tree`
 - **Tooling:** `Prisma.prisma`, `GitHub.vscode-github-actions`, `ms-azuretools.vscode-containers`, `tamasfe.even-better-toml`, `redhat.vscode-xml`
 - **Frameworks:** `Vue.volar`, `astro-build.astro-vscode`, `unifiedjs.vscode-mdx`
 - **Preview / Sass:** `ms-vscode.live-server`, `glenn2223.live-sass`, `SomewhatStationery.some-sass`, `jock.svg`

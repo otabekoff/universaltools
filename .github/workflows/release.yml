@@ -6,6 +6,8 @@ name: Release
 # This workflow then tests the pack, creates the GitHub release vX.Y.Z with the .vsix attached,
 # and publishes to the VS Code Marketplace (and Open VSX, if enabled).
 # Pushes to master that keep the same version do nothing. Pushing a tag vX.Y.Z also works.
+# Odd minor versions (4.1.x, 4.3.x) are published as pre-releases, even ones (4.0.x, 4.2.x) as releases,
+# following the Marketplace's recommended major.EVEN.patch / major.ODD.patch convention.
 #
 # Marketplace publishing uses Trusted Publishing (OIDC): no token is stored in GitHub.
 # One-time setup is described in RELEASING.md.
@@ -29,6 +31,7 @@ jobs:
     outputs:
       version: ${{ steps.meta.outputs.version }}
       release: ${{ steps.meta.outputs.release }}
+      pre-release: ${{ steps.meta.outputs.pre-release }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -42,6 +45,11 @@ jobs:
         run: |
           version=$(node -p "require('./package.json').version")
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          minor=$(echo "$version" | cut -d. -f2)
+          if (( minor % 2 == 1 )); then
+            echo "Odd minor version: publishing as a pre-release."
+            echo "pre-release=--pre-release" >> "$GITHUB_OUTPUT"
+          fi
           if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "v$version" ]]; then
             echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
             exit 1
@@ -64,10 +72,13 @@ jobs:
         run: npm run verify
       - name: Build the .vsix
         if: steps.meta.outputs.release == 'true'
-        run: npm run package
+        run: npm run package -- ${{ steps.meta.outputs.pre-release }}
       - name: Install the .vsix into a clean VS Code
         if: steps.meta.outputs.release == 'true'
         run: npm run test:install
+      - name: Run the commands, walkthrough and default settings inside VS Code
+        if: steps.meta.outputs.release == 'true'
+        run: xvfb-run -a npm run test:integration
       - uses: actions/upload-artifact@v7
         if: steps.meta.outputs.release == 'true'
         with:
@@ -94,9 +105,10 @@ jobs:
             on { print }
           ' CHANGELOG.md > notes.md
           [ -s notes.md ] || echo "See CHANGELOG.md." > notes.md
-          gh release create "v$v" ./*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md
+          gh release create "v$v" ./*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md ${PRE_RELEASE:+--prerelease}
         env:
           GH_TOKEN: ${{ github.token }}
+          PRE_RELEASE: ${{ needs.build.outputs.pre-release }}
 
   marketplace:
     needs: [build, github-release]
@@ -116,7 +128,7 @@ jobs:
         with:
           name: vsix
       - name: Publish to the VS Code Marketplace
-        run: npx vsce publish --oidc --packagePath ./*.vsix
+        run: npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --packagePath ./*.vsix
 
   open-vsx:
     # Optional: set the repository variable PUBLISH_OPENVSX=true and the secret OVSX_PAT to enable.
@@ -135,6 +147,6 @@ jobs:
         with:
           name: vsix
       - name: Publish to Open VSX
-        run: npx ovsx publish --packagePath ./*.vsix
+        run: npx ovsx publish ${{ needs.build.outputs.pre-release }} --packagePath ./*.vsix
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}

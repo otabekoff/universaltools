@@ -18,20 +18,41 @@ Merges that do not change the version do nothing. Pushing a tag `vX.Y.Z` that ma
 
 The Marketplace accepts only `major.minor.patch` versions, and each version can be published once.
 
+## Pre-releases
+
+The version number decides the channel, following the Marketplace's recommended convention:
+
+| Version | Published as |
+|---|---|
+| Even minor: `4.0.x`, `4.2.x`, … | Normal release |
+| Odd minor: `4.1.x`, `4.3.x`, … | Pre-release (GitHub *Pre-release*, Marketplace and Open VSX `--pre-release`) |
+
+So to ship a pre-release, bump to an odd minor (`npm version 4.1.0 --no-git-tag-version`) and merge as usual. Users get it only if they choose **Switch to Pre-Release Version** on the extension page in VS Code. A version number can be used only once across both channels.
+
 ## One-time setup
 
 ### 1. VS Code Marketplace: Trusted Publishing (no token needed)
 
-Azure DevOps retires global Personal Access Tokens on **December 1, 2026**. The workflow therefore publishes with Trusted Publishing (OpenID Connect) and stores no Marketplace token in GitHub.
+Azure DevOps retires global Personal Access Tokens on **December 1, 2026**. The workflow therefore publishes with Trusted Publishing (OpenID Connect) and stores no Marketplace token in GitHub. You do **not** need to create a PAT.
 
-1. Sign in to the [Marketplace publisher management page](https://marketplace.visualstudio.com/manage) and open the publisher **universaltools**.
-2. Select **Trusted Publishing** → **Create**, and enter:
-   - **Policy name:** `Release workflow`
-   - **Repository owner:** `otabekoff`
-   - **Repository:** `universaltools`
-   - **Workflow:** `release.yml`
-   - **Environment:** `marketplace`
-3. Select **Create**.
+1. Open <https://marketplace.visualstudio.com/manage/publishers/universaltools> and sign in with the account that owns the **universaltools** publisher.
+2. Click the **Trusted Publishing** tab (next to *Extensions*, *Details*, *Members*).
+3. Expand **Create** and fill in the form exactly like this (fields are case-sensitive):
+
+   | Field | Enter |
+   |---|---|
+   | Policy name | `Release workflow` |
+   | Provider | `GitHub Actions` (already selected) |
+   | Repository owner | `otabekoff` |
+   | Repository | `universaltools` |
+   | Workflow | `release.yml` |
+   | Environment | `marketplace` |
+
+   ![Trusted Publishing form](docs/trusted-publishing-form.png)
+
+4. Click **Create**. The policy appears in the list on the same tab.
+
+The repository is public, so the policy has no 48-hour activation deadline; it activates the first time the Release workflow publishes.
 
 ### 2. GitHub environment
 

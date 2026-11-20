@@ -26,7 +26,8 @@
         "vscode": "^1.90.0"
     },
     "categories": [
-        "Extension Packs"
+        "Extension Packs",
+        "Other"
     ],
     "keywords": [
         "extension pack",
@@ -43,14 +44,111 @@
         "biome",
         "node"
     ],
+    "main": "./extension.js",
+    "activationEvents": [],
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": true
+        },
+        "virtualWorkspaces": true
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "universaltools.checkHealth",
+                "title": "Check Pack Health",
+                "category": "UniversalTools"
+            },
+            {
+                "command": "universaltools.removeDroppedExtensions",
+                "title": "Remove Extensions Dropped in 4.0",
+                "category": "UniversalTools"
+            },
+            {
+                "command": "universaltools.openWalkthrough",
+                "title": "Get Started",
+                "category": "UniversalTools"
+            }
+        ],
+        "configurationDefaults": {
+            "editor.linkedEditing": true,
+            "editor.guides.bracketPairs": "active",
+            "[css]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[scss]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[less]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[xml]": {
+                "editor.defaultFormatter": "redhat.vscode-xml"
+            }
+        },
+        "walkthroughs": [
+            {
+                "id": "universaltools.welcome",
+                "title": "Get started with UniversalTools",
+                "description": "What the pack installs, the settings it turns on, and how to clean up after upgrading.",
+                "steps": [
+                    {
+                        "id": "welcome",
+                        "title": "What's in the pack",
+                        "description": "A curated set of web-development extensions, installed together.\n[Open the README](https://github.com/otabekoff/universaltools#readme)",
+                        "media": {
+                            "markdown": "walkthrough/welcome.md"
+                        },
+                        "completionEvents": [
+                            "onStepSelected"
+                        ]
+                    },
+                    {
+                        "id": "settings",
+                        "title": "Recommended settings are on",
+                        "description": "Auto rename tag, bracket guides and stylesheet/XML formatters are set as defaults. Your own settings still win.\n[Open Settings (JSON)](command:workbench.action.openSettingsJson)",
+                        "media": {
+                            "markdown": "walkthrough/settings.md"
+                        },
+                        "completionEvents": [
+                            "onStepSelected"
+                        ]
+                    },
+                    {
+                        "id": "cleanup",
+                        "title": "Remove extensions dropped in 4.0",
+                        "description": "Upgrading from 3.x? Uninstall the deprecated and duplicate extensions the old pack installed.\n[Remove Dropped Extensions](command:universaltools.removeDroppedExtensions)",
+                        "media": {
+                            "markdown": "walkthrough/cleanup.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:universaltools.removeDroppedExtensions"
+                        ]
+                    },
+                    {
+                        "id": "health",
+                        "title": "Check pack health",
+                        "description": "See which pack extensions are missing or disabled, and install them.\n[Check Pack Health](command:universaltools.checkHealth)",
+                        "media": {
+                            "markdown": "walkthrough/health.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:universaltools.checkHealth"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "scripts": {
         "verify": "node scripts/verify-pack.mjs",
         "verify:all": "node scripts/verify-pack.mjs --all",
         "package": "vsce package",
         "test:install": "node scripts/install-test.mjs",
         "test:install:local": "node scripts/install-test.mjs --use-installed",
-        "test": "npm run verify && npm run package && npm run test:install",
-        "icon": "python scripts/make-icon.py icon.png"
+        "test": "npm run verify && npm run package && npm run test:install && npm run test:integration",
+        "icon": "python scripts/make-icon.py icon.png",
+        "test:integration": "node test/run-integration.mjs"
     },
     "devDependencies": {
         "@vscode/test-electron": "^3.1.0",
@@ -58,6 +156,7 @@
         "ovsx": "^1.4.0"
     },
     "extensionPack": [
+        "adpyke.codesnap",
         "ahmadawais.shades-of-purple",
         "antfu.iconify",
         "antfu.unocss",
@@ -77,17 +176,21 @@
         "ecmel.vscode-html-css",
         "EditorConfig.EditorConfig",
         "esbenp.prettier-vscode",
+        "FanaticPythoner.better-todo-tree",
         "firefox-devtools.vscode-firefox-debug",
         "formulahendry.auto-close-tag",
+        "funkyremi.vscode-google-translate",
         "GitHub.vscode-github-actions",
         "GitHub.vscode-pull-request-github",
         "glenn2223.live-sass",
-        "Gruntfuggly.todo-tree",
+        "helixquar.randomeverything",
         "humao.rest-client",
         "jack89ita.open-file-from-path",
         "jock.svg",
         "kisstkondoros.vscode-gutter-preview",
+        "lacroixdavid1.vscode-format-context-menu",
         "Lokalise.i18n-ally",
+        "madprops.when-did-i-start-working",
         "ms-azuretools.vscode-containers",
         "ms-playwright.playwright",
         "ms-vscode.live-server",
@@ -100,6 +203,7 @@
         "razgraf.react-on-the-fly",
         "redhat.vscode-xml",
         "redhat.vscode-yaml",
+        "rid9.datetime",
         "ritwickdey.LiveServer",
         "solnurkarim.html-to-css-autocompletion",
         "SomewhatStationery.some-sass",

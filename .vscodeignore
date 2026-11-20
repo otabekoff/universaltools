@@ -6,6 +6,8 @@
 .gitattributes
 node_modules/**
 scripts/**
+test/**
+docs/**
 package-lock.json
 *.vsix
 installed-extensions.txt

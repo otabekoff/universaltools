@@ -28,6 +28,8 @@ jobs:
         run: npm run package
       - name: Install the .vsix into a clean VS Code and check every extension arrived
         run: npm run test:install
+      - name: Run the commands, walkthrough and default settings inside VS Code
+        run: xvfb-run -a npm run test:integration
       - uses: actions/upload-artifact@v7
         with:
           name: vsix
