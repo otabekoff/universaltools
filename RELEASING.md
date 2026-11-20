@@ -71,16 +71,31 @@ To approve every publish by hand, add yourself as a required reviewer under **Se
 
 ### 3. Open VSX (optional)
 
-Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors.
+Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors. It also supports Trusted Publishing, but only for an extension that **already exists** there, so the very first version is published once with a token. Source: [Open VSX Trusted Publishing](https://github.com/eclipse/openvsx/wiki/Trusted-Publishing).
 
-1. Sign in at [open-vsx.org](https://open-vsx.org) with GitHub, sign the publisher agreement, and create an access token in your profile settings.
-2. Create the namespace once: `npx ovsx create-namespace universaltools -p <token>`.
-3. Store the token and switch publishing on:
+1. **Publisher Agreement:** on open-vsx.org, open **Profile**, choose **Log in with Eclipse** (create an eclipse.org account with the same GitHub username if needed), then **Show Publisher Agreement** → **Agree**.
+2. **Namespace:** in user settings, click **+** next to *Namespaces* and create `universaltools`, all lower-case. It must match `"publisher"` in `package.json` exactly, or Trusted Publishing is rejected.
+3. **Ownership:** creating a namespace does not make you its verified owner, and Trusted Publishing requires an owner. Open an issue at [EclipseFdn/open-vsx.org](https://github.com/EclipseFdn/open-vsx.org/issues/new/choose) with the namespace template. Because `universaltools` is also your VS Code Marketplace publisher, include a link showing you control it (the [Marketplace page](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools) and this repository).
+4. **First publish, once, with a token:** under **Access Tokens**, generate a token, then from this folder:
+   ```sh
+   npx ovsx publish universaltools-4.0.0.vsix -p <token>
+   ```
+   Delete the token afterwards; it is not needed again.
+5. **Trusted Publisher:** under **Trusted Publishers**, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
 
-```sh
-gh secret set OVSX_PAT --env marketplace --repo otabekoff/universaltools   # paste the token when asked
-gh variable set PUBLISH_OPENVSX --body true --repo otabekoff/universaltools
-```
+   | Field | Enter |
+   |---|---|
+   | Organization or User name | `otabekoff` |
+   | Repository name | `universaltools` |
+   | Workflow filename | `release.yml` |
+   | Environment name | `marketplace` |
+
+6. **Switch it on:**
+   ```sh
+   gh variable set PUBLISH_OPENVSX --body true --repo otabekoff/universaltools
+   ```
+
+From the next release on, the workflow publishes to Open VSX with `ovsx publish --trusted-publishing`; no token is stored in GitHub.
 
 ## Publishing by hand (fallback)
 
