@@ -1,111 +1,168 @@
 {
     "name": "universaltools",
     "displayName": "UniversalTools",
-    "icon": "icon.png",
-    "description": "UniversalTools is a set of useful NodeJS,Vue,Quasar and overall Web-development VSCODE extensions with one click installation.",
-    "version": "3.0.0",
+    "description": "A curated set of web-development extension packs (Web Core, HTML & CSS, Frameworks, Quasar, Everyday Tools) installed in one click, with recommended settings and a pack health check.",
+    "version": "4.0.0",
     "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/otabekoff/universaltools"
     },
     "engines": {
-        "vscode": "^1.44.0"
+        "vscode": "^1.90.0"
     },
     "categories": [
-        "Extension Packs"
+        "Extension Packs",
+        "Other"
     ],
+    "keywords": [
+        "extension pack",
+        "web development",
+        "vue",
+        "react",
+        "svelte",
+        "astro",
+        "tailwind",
+        "vite",
+        "vitest",
+        "prettier",
+        "eslint",
+        "biome",
+        "node"
+    ],
+    "main": "./extension.js",
+    "activationEvents": [],
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": true
+        },
+        "virtualWorkspaces": true
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "universaltools.checkHealth",
+                "title": "Check Pack Health",
+                "category": "UniversalTools"
+            },
+            {
+                "command": "universaltools.removeDroppedExtensions",
+                "title": "Remove Extensions Dropped in 4.0",
+                "category": "UniversalTools"
+            },
+            {
+                "command": "universaltools.openWalkthrough",
+                "title": "Get Started",
+                "category": "UniversalTools"
+            }
+        ],
+        "configurationDefaults": {
+            "editor.linkedEditing": true,
+            "editor.guides.bracketPairs": "active",
+            "[css]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[scss]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[less]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[xml]": {
+                "editor.defaultFormatter": "redhat.vscode-xml"
+            }
+        },
+        "walkthroughs": [
+            {
+                "id": "universaltools.welcome",
+                "title": "Get started with UniversalTools",
+                "description": "What the pack installs, the settings it turns on, and how to clean up after upgrading.",
+                "steps": [
+                    {
+                        "id": "welcome",
+                        "title": "What's in the pack",
+                        "description": "A curated set of web-development extensions, installed together.\n[Open the README](https://github.com/otabekoff/universaltools#readme)",
+                        "media": {
+                            "markdown": "walkthrough/welcome.md"
+                        },
+                        "completionEvents": [
+                            "onStepSelected"
+                        ]
+                    },
+                    {
+                        "id": "settings",
+                        "title": "Recommended settings are on",
+                        "description": "Auto rename tag, bracket guides and stylesheet/XML formatters are set as defaults. Your own settings still win.\n[Open Settings (JSON)](command:workbench.action.openSettingsJson)",
+                        "media": {
+                            "markdown": "walkthrough/settings.md"
+                        },
+                        "completionEvents": [
+                            "onStepSelected"
+                        ]
+                    },
+                    {
+                        "id": "cleanup",
+                        "title": "Remove extensions dropped in 4.0",
+                        "description": "Upgrading from 3.x? Uninstall the deprecated and duplicate extensions the old pack installed.\n[Remove Dropped Extensions](command:universaltools.removeDroppedExtensions)",
+                        "media": {
+                            "markdown": "walkthrough/cleanup.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:universaltools.removeDroppedExtensions"
+                        ]
+                    },
+                    {
+                        "id": "health",
+                        "title": "Check pack health",
+                        "description": "See which pack extensions are missing or disabled, and install them.\n[Check Pack Health](command:universaltools.checkHealth)",
+                        "media": {
+                            "markdown": "walkthrough/health.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:universaltools.checkHealth"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "sync": "node scripts/sync-packs.mjs",
+        "sync:check": "node scripts/sync-packs.mjs --check",
+        "verify": "node scripts/verify-pack.mjs",
+        "verify:all": "node scripts/verify-pack.mjs --all",
+        "package": "node scripts/package-all.mjs",
+        "test:install": "node scripts/install-test.mjs",
+        "test:install:local": "node scripts/install-test.mjs --use-installed",
+        "test:integration": "node test/run-integration.mjs",
+        "test": "npm run sync:check && npm run verify && npm run package && npm run test:install && npm run test:integration",
+        "icon": "python scripts/make-icon.py icon.png && node scripts/sync-packs.mjs --icons",
+        "publish:openvsx-first": "node scripts/publish-openvsx-first.mjs"
+    },
+    "devDependencies": {
+        "@vscode/test-electron": "^3.1.0",
+        "@vscode/vsce": "^4.1.1",
+        "ovsx": "^1.4.0"
+    },
     "extensionPack": [
-        "vsciot-vscode.vscode-arduino",
-        "abdelaziz18003.quasar-snippets",
-        "adpyke.codesnap",
-        "adrianthedev.vueGenerator",
-        "aeschli.vscode-css-formatter",
-        "ahmadawais.shades-of-purple",
-        "ardenivanov.svelte-intellisense",
-        "AttilioCapocchiani.vuejs-helper",
-        "burkeholland.simple-react-snippets",
-        "ms-vscode.cpptools",
-        "christian-kohler.npm-intellisense",
-        "CoenraadS.bracket-pair-colorizer",
-        "dannyconnell.split-html-attributes",
-        "dariofuzinato.vue-peek",
-        "dbaeumer.vscode-eslint",
-        "dennisvhest.npm-browser",
-        "DevEscalus.vuejs-component-creator",
-        "donjayamanne.githistory",
-        "eamodio.gitlens",
-        "eg2.vscode-npm-script",
-        "Equinusocio.vsc-community-material-theme",
-        "Equinusocio.vsc-material-theme",
-        "equinusocio.vsc-material-theme-icons",
-        "esbenp.prettier-vscode",
-        "firefox-devtools.vscode-firefox-debug",
-        "fivethree.vscode-svelte-snippets",
-        "fkkmemi.memi-quasar-snippets",
-        "formulahendry.auto-close-tag",
-        "formulahendry.auto-complete-tag",
-        "formulahendry.auto-rename-tag",
-        "funkyremi.vscode-google-translate",
-        "Gruntfuggly.todo-tree",
-        "helixquar.randomeverything",
-        "hollowtree.vue-snippets",
-        "humao.rest-client",
-        "ishiyama.vue-autoimport",
-        "jack89ita.open-file-from-path",
-        "johnsoncodehk.volar",
-        "jojoee.vue-cheatsheet",
-        "kisstkondoros.vscode-gutter-preview",
-        "lacroixdavid1.vscode-format-context-menu",
-        "liuji-jim.vue",
-        "madprops.when-did-i-start-working",
-        "mariorodeghiero.vue-theme",
-        "mikeburgh.xml-format",
-        "mrmlnc.vscode-attrs-sorter",
-        "mrmlnc.vscode-autoprefixer",
-        "mrmlnc.vscode-scss",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-renderers",
-        "msjsdiag.vscode-react-native",
-        "naumovs.color-highlight",
-        "neptunedesign.vs-html-to-css",
-        "NickScialli.svelte-dark",
-        "octref.vetur",
-        "pivaszbs.svelte-autoimport",
-        "PKief.material-icon-theme",
-        "pranaygp.vscode-css-peek",
-        "razgraf.react-on-the-fly",
-        "redhat.java",
-        "rid9.datetime",
-        "ritwickdey.live-sass",
-        "ritwickdey.LiveServer",
-        "sibiraj-s.vscode-scss-formatter",
-        "silvenon.mdx",
-        "SimonMosesOnazi.quasar-v1-snippets",
-        "SimonSiefke.svg-preview",
-        "solnurkarim.html-to-css-autocompletion",
-        "sporiley.css-auto-prefix",
-        "steoates.autoimport",
-        "svelte.svelte-vscode",
-        "syler.sass-indented",
-        "sysoev.language-stylus",
-        "techer.open-in-browser",
-        "tht13.html-preview-vscode",
-        "titiaiev.vue-docs",
-        "vaniship.vue-ls-snippets",
-        "vincaslt.highlight-matching-tag",
-        "VisualStudioExptTeam.vscodeintellicode",
-        "vscjava.vscode-java-debug",
-        "vscjava.vscode-java-test",
-        "vscode-icons-team.vscode-icons",
-        "wayou.vscode-todo-highlight",
-        "wix.vscode-import-cost",
-        "Wscats.vue",
-        "xyc.vscode-mdx-preview",
-        "ysemeniuk.emmet-live",
-        "yzhang.markdown-all-in-one",
-        "Zignd.html-css-class-completion"
+        "universaltools.universaltools-web-core",
+        "universaltools.universaltools-html-css",
+        "universaltools.universaltools-frameworks",
+        "universaltools.universaltools-quasar",
+        "universaltools.universaltools-everyday-tools"
     ]
 }

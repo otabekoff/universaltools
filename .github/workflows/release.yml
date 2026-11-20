@@ -1,0 +1,168 @@
+name: Release
+
+# Releases automatically when a new version reaches master:
+#   1. bump "version" in package.json and add a "## [x.y.z]" section to CHANGELOG.md in your PR
+#   2. merge the PR
+# This workflow then tests the pack, creates the GitHub release vX.Y.Z with the .vsix attached,
+# and publishes to the VS Code Marketplace (and Open VSX, if enabled).
+# Pushes to master that keep the same version do nothing. Pushing a tag vX.Y.Z also works.
+# Odd minor versions (4.1.x, 4.3.x) are published as pre-releases, even ones (4.0.x, 4.2.x) as releases,
+# following the Marketplace's recommended major.EVEN.patch / major.ODD.patch convention.
+#
+# Marketplace publishing uses Trusted Publishing (OIDC): no token is stored in GitHub.
+# One-time setup is described in RELEASING.md.
+
+on:
+  push:
+    branches: [master]
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      release: ${{ steps.meta.outputs.release }}
+      pre-release: ${{ steps.meta.outputs.pre-release }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Decide whether this is a new version
+        id: meta
+        run: |
+          version=$(node -p "require('./package.json').version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          minor=$(echo "$version" | cut -d. -f2)
+          if (( minor % 2 == 1 )); then
+            echo "Odd minor version: publishing as a pre-release."
+            echo "pre-release=--pre-release" >> "$GITHUB_OUTPUT"
+          fi
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "v$version" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null && [[ "$GITHUB_REF_TYPE" != "tag" ]]; then
+            echo "v$version is already released; nothing to do."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          elif gh release view "v$version" >/dev/null 2>&1; then
+            echo "GitHub release v$version already exists; nothing to do."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Releasing v$version."
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Check the sub-packs match packs/packs.json
+        if: steps.meta.outputs.release == 'true'
+        run: npm run sync:check
+      - name: Check every extension against the Marketplace
+        if: steps.meta.outputs.release == 'true'
+        run: npm run verify
+      - name: Build every .vsix (sub-packs and main pack)
+        if: steps.meta.outputs.release == 'true'
+        run: npm run package -- ${{ steps.meta.outputs.pre-release }}
+      - name: Install every .vsix into a clean VS Code
+        if: steps.meta.outputs.release == 'true'
+        run: npm run test:install
+      - name: Run the commands, walkthrough and default settings inside VS Code
+        if: steps.meta.outputs.release == 'true'
+        run: xvfb-run -a npm run test:integration
+      - uses: actions/upload-artifact@v7
+        if: steps.meta.outputs.release == 'true'
+        with:
+          name: vsix
+          path: dist/*.vsix
+
+  github-release:
+    needs: build
+    if: needs.build.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the tag and the release
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+          path: dist
+      - name: Create GitHub release with notes from CHANGELOG.md
+        run: |
+          v="${{ needs.build.outputs.version }}"
+          awk -v v="$v" '
+            index($0, "## [" v "]") == 1 { on=1; next }
+            on && /^## \[/ { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "See CHANGELOG.md." > notes.md
+          gh release create "v$v" dist/*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md ${PRE_RELEASE:+--prerelease}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRE_RELEASE: ${{ needs.build.outputs.pre-release }}
+
+  marketplace:
+    needs: [build, github-release]
+    runs-on: ubuntu-latest
+    environment: marketplace # must match the Trusted Publishing policy on the Marketplace
+    permissions:
+      contents: read
+      id-token: write # lets vsce exchange a GitHub OIDC token for a short-lived Marketplace token
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+          path: dist
+      - name: Publish to the VS Code Marketplace (sub-packs first, then the main pack)
+        run: |
+          for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
+            echo "Publishing $f"
+            npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+          done
+
+  open-vsx:
+    # Optional: set the repository variable PUBLISH_OPENVSX=true to enable (after the one-time setup in RELEASING.md).
+    # Uses Open VSX Trusted Publishing, so no access token is stored.
+    needs: [build, github-release]
+    if: vars.PUBLISH_OPENVSX == 'true'
+    runs-on: ubuntu-latest
+    environment: marketplace # must match the Trusted Publisher registration on open-vsx.org
+    permissions:
+      contents: read
+      id-token: write # lets ovsx exchange a GitHub OIDC token for a short-lived Open VSX token
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+          path: dist
+      - name: Publish to Open VSX (sub-packs first, then the main pack)
+        run: |
+          for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
+            echo "Publishing $f"
+            npx ovsx publish --trusted-publishing ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+          done

@@ -1,0 +1,43 @@
+{
+    "name": "universaltools-quasar",
+    "displayName": "UniversalTools: Quasar",
+    "description": "Vue - Official plus IntelliSense for Quasar 2 components and Quasar CSS classes.",
+    "version": "4.0.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/quasar#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/quasar"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "quasar",
+        "quasar 2",
+        "vue",
+        "intellisense"
+    ],
+    "extensionPack": [
+        "Vue.volar",
+        "simonhe.common-intellisense",
+        "hossaini.quasar-intellisense"
+    ]
+}

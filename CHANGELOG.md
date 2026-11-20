@@ -2,6 +2,104 @@
 
 All notable changes to the "universaltools" extension pack will be documented in this file.
 
+## [4.0.0]
+
+A clean-up release: deprecated and unmaintained extensions are removed, and modern replacements are added.
+Removing an extension from a pack does not uninstall it, so you can uninstall the old ones yourself (see the README).
+For features that are now built into VS Code, see **Built-in replacements** in the README.
+
+Every removal below was checked against the VS Code Marketplace (its deprecation list and each extension's page) in November 2026.
+
+### Changed
+
+- New icon (512×512 PNG).
+- Requires VS Code 1.90 or newer (was 1.44).
+- The pack is now focused on web development plus everyday tools: 97 → 69 extensions.
+- **Split into five packs** that UniversalTools installs together, each also available on its own: **Web Core**, **HTML & CSS**, **Frameworks**, **Quasar** and **Everyday Tools**.
+- **New Quasar pack** for Quasar 2: `simonhe.common-intellisense` (Quasar 2 component IntelliSense) and `hossaini.quasar-intellisense` (Quasar CSS classes), with `Vue.volar`.
+- The pack is now a small extension too:
+  - **Recommended settings as defaults:** `editor.linkedEditing`, `editor.guides.bracketPairs: "active"`, Prettier for CSS/SCSS/Less and Red Hat XML for XML. Your own settings still win.
+  - **Get Started walkthrough**, shown after install.
+  - **UniversalTools: Check Pack Health** and **UniversalTools: Remove Extensions Dropped in 4.0** commands.
+- License holder is now Otabek Sadiridinov.
+- Developer, homepage, issue tracker, keywords and Marketplace banner added to the manifest.
+- New checks: `npm run verify` tests every extension against the Marketplace, `npm run test:install` installs the built pack into a clean VS Code, and `npm run test:integration` tests the commands, walkthrough and defaults inside VS Code.
+- Releases are automated with GitHub Actions and published with Marketplace Trusted Publishing (see RELEASING.md).
+
+### Removed: deprecated on the Marketplace
+
+| Removed | Marketplace status | Replaced by |
+|---|---|---|
+| `CoenraadS.bracket-pair-colorizer` | Deprecated and unpublished; replaced by built-in settings | Built in: `editor.bracketPairColorization.enabled`, `editor.guides.bracketPairs` |
+| `Equinusocio.vsc-material-theme`, `equinusocio.vsc-material-theme-icons` | Deprecated, install blocked: "Material Theme is now Vira Theme" | `PKief.material-icon-theme` (already included) for file icons; the author's successor is `vira.vsc-vira-theme` |
+| `Equinusocio.vsc-community-material-theme` | Deprecated, unpublished, install blocked | As above |
+| `VisualStudioExptTeam.vscodeintellicode` | Deprecated, install blocked; Marketplace points to GitHub Copilot Chat | Nothing in the pack |
+| `vsciot-vscode.vscode-arduino` | Deprecated and unpublished: "no longer maintained" | Nothing (not web development) |
+| `eg2.vscode-npm-script` | Deprecated | Built in: **NPM Scripts** view |
+| `ritwickdey.live-sass` | Deprecated, install blocked; Marketplace points to the new one | `glenn2223.live-sass` |
+| `tht13.html-preview-vscode` | Deprecated | `ms-vscode.live-server` (Live Preview) |
+| `silvenon.mdx` | Deprecated, install blocked; Marketplace points to the new one | `unifiedjs.vscode-mdx` |
+| `liuji-jim.vue` | Deprecated, install blocked; Marketplace points to the Vue language extension | `Vue.volar` |
+| `johnsoncodehk.volar` | No longer on the Marketplace (moved to `Vue.volar`) | `Vue.volar` (Vue - Official) |
+
+### Removed: superseded, or not updated for years
+
+| Removed | Evidence | Replaced by |
+|---|---|---|
+| `octref.vetur` | Its own page points to the new official Vue extension; last updated 2023 | `Vue.volar` |
+| `formulahendry.auto-rename-tag` | Its own page says to use the built-in `editor.linkedEditing` (VS Code 1.44+); last updated 2022 | Built in: `editor.linkedEditing` |
+| `formulahendry.auto-complete-tag` | Only bundles Auto Close Tag and Auto Rename Tag; last updated 2018 | Auto Close Tag stays in the pack; renaming is built in |
+| `wayou.vscode-todo-highlight` | Last updated 2021 | `FanaticPythoner.better-todo-tree` (it also highlights) |
+| `Gruntfuggly.todo-tree` | Last updated 2023 | `FanaticPythoner.better-todo-tree`, its maintained fork, which imports existing Todo Tree settings |
+| `aeschli.vscode-css-formatter` | Last updated 2021 | `esbenp.prettier-vscode` (already included; formats CSS, SCSS and Less) |
+| `sibiraj-s.vscode-scss-formatter` | Still maintained, but does the same job as Prettier | `esbenp.prettier-vscode` |
+| `mikeburgh.xml-format` | Last updated 2022 | `redhat.vscode-xml` |
+| `xyc.vscode-mdx-preview` | Last updated 2021 | `unifiedjs.vscode-mdx` |
+| `mikestead.dotenv` | Last updated 2018 | `dotenv.dotenv-vscode` (official dotenv extension) |
+| `Zignd.html-css-class-completion` | Last updated 2020 | `ecmel.vscode-html-css` (class and id completion) |
+| `mrmlnc.vscode-scss` | Last updated 2021; Some Sass began as this extension and asks you to uninstall it | `SomewhatStationery.some-sass` |
+| `SimonSiefke.svg-preview` | Last updated 2020 | `jock.svg` (live preview, editing, PNG export) |
+| `donjayamanne.githistory` | Last updated 2023; VS Code now has a built-in Source Control Graph | Built in, plus `eamodio.gitlens` (already included) |
+
+### Removed: old Vue 2 and Quasar v1 helpers
+
+Covered by `Vue.volar`: `Wscats.vue`, `hollowtree.vue-snippets`, `vaniship.vue-ls-snippets`, `jojoee.vue-cheatsheet`, `titiaiev.vue-docs`, `ishiyama.vue-autoimport`, `AttilioCapocchiani.vuejs-helper`, `DevEscalus.vuejs-component-creator`, `adrianthedev.vueGenerator`, `dariofuzinato.vue-peek`, `mariorodeghiero.vue-theme`, `SimonMosesOnazi.quasar-v1-snippets`, `abdelaziz18003.quasar-snippets`, `fkkmemi.memi-quasar-snippets`.
+
+### Removed: redundant
+
+| Removed | Covered by |
+|---|---|
+| `ardenivanov.svelte-intellisense`, `fivethree.vscode-svelte-snippets`, `pivaszbs.svelte-autoimport`, `NickScialli.svelte-dark` | `svelte.svelte-vscode` |
+| `steoates.autoimport` | VS Code's built-in TypeScript/JavaScript auto imports |
+| `sporiley.css-auto-prefix`, `mrmlnc.vscode-autoprefixer`, `mrmlnc.vscode-attrs-sorter` | Autoprefixer through PostCSS in your build |
+| `vscode-icons-team.vscode-icons` | `PKief.material-icon-theme` (one icon theme is enough) |
+
+### Removed: not web development
+
+- **Moved to separate packs (planned):** `redhat.java`, `vscjava.vscode-java-debug`, `vscjava.vscode-java-test`, `ms-python.python`, `ms-python.vscode-pylance`, `ms-toolsai.jupyter`, `ms-toolsai.jupyter-renderers`, `ms-vscode.cpptools`, `msjsdiag.vscode-react-native`.
+
+### Kept
+
+These were considered for removal but are still maintained or still needed:
+
+- Everyday tools: `adpyke.codesnap`, `funkyremi.vscode-google-translate`, `helixquar.randomeverything`, `rid9.datetime`, `madprops.when-did-i-start-working`, `lacroixdavid1.vscode-format-context-menu`.
+- `ritwickdey.LiveServer`: updated in 2026.
+- `techer.open-in-browser`: updated in 2026.
+- `formulahendry.auto-close-tag`: VS Code closes tags itself only in HTML, Handlebars and Razor (and JSX/TSX); this extension adds it for Vue, XML, PHP and others.
+- `burkeholland.simple-react-snippets`: updated in 2024. The suggested replacement, `dsznajder.es7-react-js-snippets`, was last updated in 2022, so it was not added.
+
+### Added
+
+- **Lint / format:** `biomejs.biome`, `oxc.oxc-vscode`, `EditorConfig.EditorConfig`, `stylelint.vscode-stylelint`
+- **CSS:** `bradlc.vscode-tailwindcss`, `antfu.unocss`, `csstools.postcss`, `ecmel.vscode-html-css`
+- **Testing:** `vitest.explorer`, `ms-playwright.playwright`
+- **Quality of life:** `usernamehw.errorlens`, `yoavbls.pretty-ts-errors`, `streetsidesoftware.code-spell-checker`, `dotenv.dotenv-vscode`, `antfu.iconify`, `Lokalise.i18n-ally`, `FanaticPythoner.better-todo-tree`
+- **Tooling:** `Prisma.prisma`, `GitHub.vscode-github-actions`, `ms-azuretools.vscode-containers`, `tamasfe.even-better-toml`, `redhat.vscode-xml`
+- **Frameworks:** `Vue.volar`, `astro-build.astro-vscode`, `unifiedjs.vscode-mdx`
+- **Preview / Sass:** `ms-vscode.live-server`, `glenn2223.live-sass`, `SomewhatStationery.some-sass`, `jock.svg`
+- **Editing:** `christian-kohler.path-intellisense`, `redhat.vscode-yaml`, `DavidAnson.vscode-markdownlint`
+- **GitHub:** `GitHub.vscode-pull-request-github`
+
 ## [Release 0.0.1]
 
 - Initial release
@@ -9,12 +107,3 @@ All notable changes to the "universaltools" extension pack will be documented in
 - Added a new theme(Shades of purple)
 - Added file icon theme(VSCode icons)
 - Version 0.0.1 release upgraded
-  
-## [What is in the next release?]
-
-- Will be added new extensions
-- Extensions will be upgraded
-- Will be added new themes
-- Will be added new icon themes
-- Will be deleted unnecessary ones
-- New theme and extension from author
