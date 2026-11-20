@@ -77,6 +77,9 @@ MIT
 
   put(join(dir, "LICENSE"), readFileSync(join(root, "LICENSE"), "utf8").replace(/\r\n/g, "\n"));
 
+  // a pack ships only its manifest, README, CHANGELOG, LICENSE and icon (vsce adds those itself)
+  put(join(dir, ".vscodeignore"), "**/*.vsix\n**/.DS_Store\n");
+
   const changelog = join(dir, "CHANGELOG.md");
   if (!existsSync(changelog) && !check) {
     writeFileSync(
