@@ -1,0 +1,5 @@
+node_modules/
+.vscode-test/
+*.vsix
+__pycache__/
+installed-extensions.txt

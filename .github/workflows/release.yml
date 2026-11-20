@@ -1,0 +1,140 @@
+name: Release
+
+# Releases automatically when a new version reaches master:
+#   1. bump "version" in package.json and add a "## [x.y.z]" section to CHANGELOG.md in your PR
+#   2. merge the PR
+# This workflow then tests the pack, creates the GitHub release vX.Y.Z with the .vsix attached,
+# and publishes to the VS Code Marketplace (and Open VSX, if enabled).
+# Pushes to master that keep the same version do nothing. Pushing a tag vX.Y.Z also works.
+#
+# Marketplace publishing uses Trusted Publishing (OIDC): no token is stored in GitHub.
+# One-time setup is described in RELEASING.md.
+
+on:
+  push:
+    branches: [master]
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      release: ${{ steps.meta.outputs.release }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Decide whether this is a new version
+        id: meta
+        run: |
+          version=$(node -p "require('./package.json').version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "v$version" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null && [[ "$GITHUB_REF_TYPE" != "tag" ]]; then
+            echo "v$version is already released; nothing to do."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          elif gh release view "v$version" >/dev/null 2>&1; then
+            echo "GitHub release v$version already exists; nothing to do."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Releasing v$version."
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Check every extension against the Marketplace
+        if: steps.meta.outputs.release == 'true'
+        run: npm run verify
+      - name: Build the .vsix
+        if: steps.meta.outputs.release == 'true'
+        run: npm run package
+      - name: Install the .vsix into a clean VS Code
+        if: steps.meta.outputs.release == 'true'
+        run: npm run test:install
+      - uses: actions/upload-artifact@v7
+        if: steps.meta.outputs.release == 'true'
+        with:
+          name: vsix
+          path: "*.vsix"
+
+  github-release:
+    needs: build
+    if: needs.build.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the tag and the release
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+      - name: Create GitHub release with notes from CHANGELOG.md
+        run: |
+          v="${{ needs.build.outputs.version }}"
+          awk -v v="$v" '
+            index($0, "## [" v "]") == 1 { on=1; next }
+            on && /^## \[/ { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "See CHANGELOG.md." > notes.md
+          gh release create "v$v" ./*.vsix --target "$GITHUB_SHA" --title "v$v" --notes-file notes.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  marketplace:
+    needs: [build, github-release]
+    runs-on: ubuntu-latest
+    environment: marketplace # must match the Trusted Publishing policy on the Marketplace
+    permissions:
+      contents: read
+      id-token: write # lets vsce exchange a GitHub OIDC token for a short-lived Marketplace token
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+      - name: Publish to the VS Code Marketplace
+        run: npx vsce publish --oidc --packagePath ./*.vsix
+
+  open-vsx:
+    # Optional: set the repository variable PUBLISH_OPENVSX=true and the secret OVSX_PAT to enable.
+    needs: [build, github-release]
+    if: vars.PUBLISH_OPENVSX == 'true'
+    runs-on: ubuntu-latest
+    environment: marketplace
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v8
+        with:
+          name: vsix
+      - name: Publish to Open VSX
+        run: npx ovsx publish --packagePath ./*.vsix
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}

@@ -1,0 +1,35 @@
+name: CI
+
+# Checks every pull request (and every push to master) without publishing anything.
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 6 * * 1" # every Monday: catch extensions that got deprecated or unpublished since the last release
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check every extension against the Marketplace
+        run: npm run verify
+      - name: Build the .vsix
+        run: npm run package
+      - name: Install the .vsix into a clean VS Code and check every extension arrived
+        run: npm run test:install
+      - uses: actions/upload-artifact@v7
+        with:
+          name: vsix
+          path: "*.vsix"
+          retention-days: 14
