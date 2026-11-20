@@ -150,13 +150,16 @@
         "test:install:local": "node scripts/install-test.mjs --use-installed",
         "test:integration": "node test/run-integration.mjs",
         "test": "npm run sync:check && npm run verify && npm run package && npm run test:install && npm run test:integration",
-        "icon": "python scripts/make-icon.py icon.png && node scripts/sync-packs.mjs --icons",
+        "icon": "node scripts/sync-packs.mjs --icons",
         "publish:openvsx-first": "node scripts/publish-openvsx-first.mjs"
     },
     "devDependencies": {
+        "@resvg/resvg-js": "^2.6.2",
         "@vscode/test-electron": "^3.1.0",
         "@vscode/vsce": "^4.1.1",
-        "ovsx": "^1.4.0"
+        "lucide-static": "^1.77.0",
+        "ovsx": "^1.4.0",
+        "simple-icons": "^16.38.0"
     },
     "extensionPack": [
         "universaltools.universaltools-web-core",

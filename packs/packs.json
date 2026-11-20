@@ -1,11 +1,16 @@
 {
-    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list.",
+    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone language packs that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide); run `npm run icon` after changing them.",
+    "main": {
+        "accent": "#EA580C",
+        "icon": "lucide:toolbox"
+    },
     "packs": [
         {
             "dir": "web-core",
             "displayName": "UniversalTools: Web Core",
             "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
-            "accent": "#FB923C",
+            "accent": "#DC2626",
+            "icon": "lucide:globe",
             "keywords": [
                 "web development",
                 "eslint",
@@ -63,7 +68,8 @@
             "dir": "html-css",
             "displayName": "UniversalTools: HTML & CSS",
             "description": "HTML tags, Tailwind CSS, UnoCSS, Sass, PostCSS, Stylus, Stylelint and CSS helpers.",
-            "accent": "#F472B6",
+            "accent": "#7C2D12",
+            "icon": "si:html5",
             "keywords": [
                 "html",
                 "css",
@@ -98,7 +104,8 @@
             "dir": "frameworks",
             "displayName": "UniversalTools: Frameworks",
             "description": "Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.",
-            "accent": "#34D399",
+            "accent": "#16A34A",
+            "icon": "lucide:layers",
             "keywords": [
                 "vue",
                 "svelte",
@@ -124,7 +131,8 @@
             "dir": "quasar",
             "displayName": "UniversalTools: Quasar",
             "description": "Vue - Official plus IntelliSense for Quasar 2 components and Quasar CSS classes.",
-            "accent": "#60A5FA",
+            "accent": "#9D174D",
+            "icon": "si:quasar",
             "keywords": [
                 "quasar",
                 "quasar 2",
@@ -141,7 +149,8 @@
             "dir": "everyday-tools",
             "displayName": "UniversalTools: Everyday Tools",
             "description": "Code screenshots, translation, a code runner, saved terminal sessions, a PDF viewer, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
-            "accent": "#C084FC",
+            "accent": "#DB2777",
+            "icon": "lucide:sparkles",
             "keywords": [
                 "codesnap",
                 "screenshot",
@@ -166,6 +175,147 @@
                 "formulahendry.code-runner",
                 "nguyenngoclong.terminal-keeper",
                 "tomoki1207.pdf"
+            ]
+        },
+        {
+            "dir": "python",
+            "displayName": "UniversalTools: Python",
+            "description": "Python language support, Pylance, debugging, environments, Ruff linting and formatting, Jupyter notebooks and Mypy type checking.",
+            "accent": "#A16207",
+            "icon": "si:python",
+            "includeInMain": false,
+            "keywords": [
+                "python",
+                "pylance",
+                "ruff",
+                "jupyter",
+                "mypy",
+                "debugpy"
+            ],
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-python.vscode-python-envs",
+                "charliermarsh.ruff",
+                "ms-toolsai.jupyter",
+                "ms-python.mypy-type-checker"
+            ]
+        },
+        {
+            "dir": "cpp",
+            "displayName": "UniversalTools: C/C++",
+            "description": "C/C++ IntelliSense and debugging, CMake and Makefile projects, and the CodeLLDB debugger.",
+            "accent": "#78716C",
+            "icon": "si:cplusplus",
+            "includeInMain": false,
+            "keywords": [
+                "c",
+                "c++",
+                "cpp",
+                "cmake",
+                "makefile",
+                "lldb"
+            ],
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.makefile-tools",
+                "vadimcn.vscode-lldb"
+            ]
+        },
+        {
+            "dir": "rust",
+            "displayName": "UniversalTools: Rust",
+            "description": "rust-analyzer, the CodeLLDB debugger, Cargo.toml support and crate version hints.",
+            "accent": "#292524",
+            "icon": "si:rust",
+            "includeInMain": false,
+            "keywords": [
+                "rust",
+                "rust-analyzer",
+                "cargo",
+                "lldb",
+                "toml"
+            ],
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "fill-labs.dependi"
+            ]
+        },
+        {
+            "dir": "dart-flutter",
+            "displayName": "UniversalTools: Dart & Flutter",
+            "description": "Official Dart and Flutter support.",
+            "accent": "#4D7C0F",
+            "icon": "si:flutter",
+            "includeInMain": false,
+            "keywords": [
+                "dart",
+                "flutter",
+                "mobile"
+            ],
+            "extensions": [
+                "Dart-Code.dart-code",
+                "Dart-Code.flutter"
+            ]
+        },
+        {
+            "dir": "java-kotlin",
+            "displayName": "UniversalTools: Java & Kotlin",
+            "description": "Java language support, debugging, tests, Maven, Gradle and project management, plus the official Kotlin extension by JetBrains.",
+            "accent": "#701A75",
+            "icon": "si:kotlin",
+            "includeInMain": false,
+            "keywords": [
+                "java",
+                "kotlin",
+                "maven",
+                "gradle",
+                "jvm"
+            ],
+            "extensions": [
+                "redhat.java",
+                "vscjava.vscode-java-debug",
+                "vscjava.vscode-java-test",
+                "vscjava.vscode-maven",
+                "vscjava.vscode-gradle",
+                "vscjava.vscode-java-dependency",
+                "JetBrains.kotlin-server"
+            ]
+        },
+        {
+            "dir": "mobile",
+            "displayName": "UniversalTools: Mobile",
+            "description": "React Native and Expo development tools.",
+            "accent": "#166534",
+            "icon": "si:react",
+            "includeInMain": false,
+            "keywords": [
+                "react native",
+                "expo",
+                "mobile"
+            ],
+            "extensions": [
+                "expo.vscode-expo-tools",
+                "msjsdiag.vscode-react-native"
+            ]
+        },
+        {
+            "dir": "go",
+            "displayName": "UniversalTools: Go",
+            "description": "Official Go language support.",
+            "accent": "#115E59",
+            "icon": "si:go",
+            "includeInMain": false,
+            "keywords": [
+                "go",
+                "golang"
+            ],
+            "extensions": [
+                "golang.go"
             ]
         }
     ]

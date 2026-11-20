@@ -3,11 +3,11 @@
 Releases are automatic. When a pull request that changes `"version"` in `package.json` is merged into `master`, the [Release workflow](.github/workflows/release.yml):
 
 1. checks that `packs/` matches `packs/packs.json` and every extension against the Marketplace,
-2. builds six `.vsix` files into `dist/` (the five sub-packs and the main pack), installs them into a clean VS Code and runs the integration tests,
-3. creates the GitHub release `vX.Y.Z` with all six `.vsix` files attached and the matching `CHANGELOG.md` section as notes,
+2. builds a `.vsix` for every pack in `packs/packs.json` plus the main pack into `dist/` (13 as of 4.2.0), installs them into a clean VS Code and runs the integration tests,
+3. creates the GitHub release `vX.Y.Z` with every `.vsix` file attached and the matching `CHANGELOG.md` section as notes,
 4. publishes to the VS Code Marketplace, and to Open VSX if enabled: sub-packs first, then the main pack, because the main pack installs them.
 
-All six extensions share the version in the root `package.json`; `npm run sync` copies it into `packs/`.
+All extensions share the version in the root `package.json`; `npm run sync` copies it into `packs/`.
 
 Merges that do not change the version do nothing. Pushing a tag `vX.Y.Z` that matches `package.json` also releases.
 
@@ -56,7 +56,7 @@ Azure DevOps retires global Personal Access Tokens on **December 1, 2026**. The 
 
 The repository is public, so the policy has no 48-hour activation deadline; it activates the first time the Release workflow publishes.
 
-The policy belongs to the publisher, so the one policy is meant to cover all six extensions. The five sub-packs are **new** extensions; the Marketplace docs don't say whether a Trusted Publishing token may create a new extension. If the first release fails on a sub-pack with a permissions error, publish that sub-pack once by hand (see the end of this file), then re-run the job.
+The policy belongs to the publisher, so the one policy covers every extension it publishes, including brand-new ones: the five web sub-packs were created this way in 4.0.0.
 
 ### 2. GitHub environment
 
@@ -75,7 +75,7 @@ To approve every publish by hand, add yourself as a required reviewer under **Se
 
 ### 3. Open VSX (optional)
 
-Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors. It also supports Trusted Publishing, but only for an extension that **already exists** there, so the very first version of each of the six extensions is published once with a token. Each extension then needs its own Trusted Publisher registration. Source: [Open VSX Trusted Publishing](https://github.com/eclipse/openvsx/wiki/Trusted-Publishing).
+Open VSX serves VSCodium, Cursor, Windsurf and other VS Code–based editors. It also supports Trusted Publishing, but only for an extension that **already exists** there, so the very first version of each extension is published once with a token. Each extension then needs its own Trusted Publisher registration. Source: [Open VSX Trusted Publishing](https://github.com/eclipse/openvsx/wiki/Trusted-Publishing).
 
 Note: 12 of the 69 extensions in the packs are not on Open VSX (for example Simple React Snippets, Google Translate, Random Everything), so editors that use Open VSX cannot install those.
 
@@ -88,7 +88,7 @@ Note: 12 of the 69 extensions in the packs are not on Open VSX (for example Simp
    $env:OVSX_PAT = "<token>"; npm run publish:openvsx-first; Remove-Item Env:OVSX_PAT
    ```
    This uploads the five sub-packs, then the main pack. Delete the token on open-vsx.org afterwards; it is not needed again.
-5. **Trusted Publishers:** under **Trusted Publishers**, create **one registration per extension** (six in total: `universaltools`, `universaltools-web-core`, `universaltools-html-css`, `universaltools-frameworks`, `universaltools-quasar`, `universaltools-everyday-tools`). For each, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
+5. **Trusted Publishers:** under **Trusted Publishers**, create **one registration per extension**: `universaltools` plus one `universaltools-<dir>` for every pack in `packs/packs.json`. For each, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
 
    | Field | Enter |
    |---|---|

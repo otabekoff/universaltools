@@ -3,7 +3,7 @@
 
 module.exports = [
   {
-    label: "Deprecated or replaced",
+    label: "Deprecated, replaced or built into VS Code: safe to remove",
     preselect: true,
     ids: [
       "CoenraadS.bracket-pair-colorizer", "octref.vetur", "johnsoncodehk.volar", "liuji-jim.vue",
@@ -36,7 +36,7 @@ module.exports = [
     ],
   },
   {
-    label: "Other languages (moved out of this web pack; keep them if you use these languages)",
+    label: "Other languages: not deprecated, now in the UniversalTools language packs (Python, C/C++, Java & Kotlin, Mobile). Keep them if you use these languages",
     preselect: false,
     ids: [
       "redhat.java", "vscjava.vscode-java-debug", "vscjava.vscode-java-test",

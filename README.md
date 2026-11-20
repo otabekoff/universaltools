@@ -29,6 +29,20 @@ UniversalTools installs five smaller packs. Install any of them on its own if yo
 
 The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
 
+## Language packs
+
+Separate packs for other languages. The main UniversalTools pack does **not** install these; install the ones you need.
+
+| Pack | What it contains |
+|---|---|
+| [UniversalTools: Python](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-python) | Python, Pylance, Python Debugger, Python Environments, Ruff, Jupyter, Mypy |
+| [UniversalTools: C/C++](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-cpp) | C/C++, CMake Tools, Makefile Tools, CodeLLDB |
+| [UniversalTools: Rust](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-rust) | rust-analyzer, CodeLLDB, Even Better TOML, Dependi |
+| [UniversalTools: Dart & Flutter](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-dart-flutter) | Dart, Flutter |
+| [UniversalTools: Java & Kotlin](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-java-kotlin) | Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains |
+| [UniversalTools: Mobile](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-mobile) | Expo Tools, React Native Tools |
+| [UniversalTools: Go](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-go) | Go |
+
 ## Upgrading from 3.x
 
 Version 4.0.0 removed many extensions (see the [changelog](CHANGELOG.md)). VS Code does not uninstall extensions when a pack drops them.
@@ -188,7 +202,7 @@ Run `npm ci` once, then:
 | `npm run test:install` | Same, but downloads a fresh VS Code first (used in CI). |
 | `npm run test:integration` | Starts a downloaded VS Code with the extension loaded and tests the commands, the walkthrough and the default settings. |
 | `npm test` | All of the above, in order. |
-| `npm run icon` | Redraws `icon.png` and every sub-pack icon (512×512) from `scripts/make-icon.py`; needs Python with Pillow. The Marketplace does not accept SVG icons. |
+| `npm run icon` | Redraws every icon (main pack and sub-packs, 512×512) from the `accent` colour and white `icon` in `packs/packs.json`, using [Simple Icons](https://simpleicons.org) (CC0) and [Lucide](https://lucide.dev) (ISC). The Marketplace does not accept SVG icons, so they are rendered to PNG. |
 | `npm run publish:openvsx-first` | One-time first upload to Open VSX with a token; see [RELEASING.md](RELEASING.md). |
 
 The code is plain JavaScript with no build step: [extension.js](extension.js) holds the commands, [src/dropped.js](src/dropped.js) the list of extensions dropped in 4.0, and [walkthrough/](walkthrough/) the Get Started pages.

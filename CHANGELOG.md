@@ -12,6 +12,23 @@ All notable changes to the "universaltools" extension pack will be documented in
 
 All seven were checked on the VS Code Marketplace: published, not deprecated, and maintained.
 
+### New language packs
+
+Standalone packs, **not** installed by the main UniversalTools web pack:
+
+- **UniversalTools: Python:** Python, Pylance, Python Debugger, Python Environments, Ruff, Jupyter, Mypy
+- **UniversalTools: C/C++:** C/C++, CMake Tools, Makefile Tools, CodeLLDB
+- **UniversalTools: Rust:** rust-analyzer, CodeLLDB, Even Better TOML, Dependi
+- **UniversalTools: Dart & Flutter:** Dart, Flutter
+- **UniversalTools: Java & Kotlin:** Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains
+- **UniversalTools: Mobile:** Expo Tools, React Native Tools
+- **UniversalTools: Go:** Go
+
+### Changed
+
+- **New icons:** every pack now shows a flat white icon on its coloured tile (a toolbox for UniversalTools, the language or framework logo for each pack), with 13 tile colours checked to be clearly distinct and readable with white.
+- **Check Pack Health** now groups leftover extensions by why they were dropped, and says clearly that the Python, C/C++, Java and React Native extensions are not deprecated.
+
 ## [4.0.0]
 
 A clean-up release: deprecated and unmaintained extensions are removed, and modern replacements are added.

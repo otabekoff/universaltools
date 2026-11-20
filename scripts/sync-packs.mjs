@@ -1,16 +1,18 @@
-// Generates packs/<dir>/ (package.json, README.md, LICENSE, CHANGELOG.md, icon.png) from
+// Generates packs/<dir>/ (package.json, README.md, LICENSE, CHANGELOG.md, icon.png) and icon.png from
 // packs/packs.json, sets the main pack's "extensionPack" to the sub-packs, and writes
 // src/pack-contents.json for the health check.
 //
 // Usage:
 //   node scripts/sync-packs.mjs           write everything (icons only when missing)
-//   node scripts/sync-packs.mjs --icons   also redraw every sub-pack icon (needs Python + Pillow)
+//   node scripts/sync-packs.mjs --icons   also redraw every icon, the main pack's included (scripts/make-icon.mjs)
 //   node scripts/sync-packs.mjs --check   change nothing; exit 1 if any generated file is out of date
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync, copyFileSync } from "node:fs";
-import { spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { root, rootPkg, packDefs, packName, packId, packDir } from "./packs.mjs";
+import { root, rootPkg, packDefs, packName, packId, packDir, inMain, readJson } from "./packs.mjs";
+import { renderIcon } from "./make-icon.mjs";
+
+const mainStyle = readJson(join(root, "packs", "packs.json")).main;
 
 const check = process.argv.includes("--check");
 const redrawIcons = process.argv.includes("--icons");
@@ -59,7 +61,11 @@ for (const def of packDefs()) {
 
 ${def.description}
 
-Part of [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
+${
+  inMain(def)
+    ? `Part of [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}), which installs this pack together with the other UniversalTools web packs. Install this one on its own if you only need these extensions.`
+    : `A standalone UniversalTools language pack. The main [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}) web pack does not install it; install it on its own when you work in this language.`
+}
 
 **Developer:** [${main.author.name}](${main.author.url}) · [Source code](${repo}/tree/master/packs/${def.dir}) · [Report an issue](${main.bugs.url})
 
@@ -84,26 +90,26 @@ MIT
   if (!existsSync(changelog) && !check) {
     writeFileSync(
       changelog,
-      `# Change Log\n\n## [${main.version}]\n\n- First release as a separate pack, split out of UniversalTools ${main.version}.\n`,
+      `# Change Log\n\n## [${main.version}]\n\n- ${inMain(def) ? `First release as a separate pack, split out of UniversalTools ${main.version}.` : "First release."}\n`,
     );
   }
 
   const icon = join(dir, "icon.png");
-  if (!check && (redrawIcons || !existsSync(icon))) {
-    const python = process.platform === "win32" ? "python" : "python3";
-    const r = spawnSync(python, ["-I", join(root, "scripts", "make-icon.py"), icon, "0", def.accent], { stdio: "inherit" });
-    if (r.status !== 0) throw new Error(`Drawing ${icon} failed (needs Python with Pillow)`);
-  }
+  if (!check && (redrawIcons || !existsSync(icon))) renderIcon(icon, def.accent, def.icon);
   if (check && !existsSync(icon)) stale.push(`packs/${def.dir}/icon.png`);
 }
 
+// the main pack's own icon
+const mainIcon = join(root, "icon.png");
+if (!check && (redrawIcons || !existsSync(mainIcon))) renderIcon(mainIcon, mainStyle.accent, mainStyle.icon);
+
 // main pack: installs the sub-packs
 const mainPkg = rootPkg();
-mainPkg.extensionPack = packDefs().map((def) => packId(def, main.publisher));
+mainPkg.extensionPack = packDefs().filter(inMain).map((def) => packId(def, main.publisher));
 put(join(root, "package.json"), json(mainPkg));
 
 // list of what each sub-pack installs, used by the health check in extension.js
-const contents = Object.fromEntries(packDefs().map((def) => [packId(def, main.publisher), def.extensions]));
+const contents = Object.fromEntries(packDefs().filter(inMain).map((def) => [packId(def, main.publisher), def.extensions]));
 put(join(root, "src", "pack-contents.json"), json(contents));
 
 if (check) {

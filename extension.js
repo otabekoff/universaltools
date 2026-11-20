@@ -83,7 +83,8 @@ async function removeDroppedExtensions(options = {}) {
 
 async function checkHealth(options = {}) {
   const missing = findMissing();
-  const leftovers = findDropped().map((f) => f.id);
+  const droppedFound = findDropped();
+  const leftovers = droppedFound.map((f) => f.id);
   const result = { total: extensionPack.length, missing, dropped: leftovers };
   if (options.silent) return result;
 
@@ -96,7 +97,12 @@ async function checkHealth(options = {}) {
   if (leftovers.length) {
     out.appendLine("");
     out.appendLine("Still installed, but dropped from the pack in 4.0:");
-    leftovers.forEach((id) => out.appendLine(`  - ${id}`));
+    for (const group of dropped) {
+      const inGroup = droppedFound.filter((f) => f.group === group.label);
+      if (!inGroup.length) continue;
+      out.appendLine(`  ${group.label}:`);
+      inGroup.forEach((f) => out.appendLine(`    - ${f.id}`));
+    }
   }
 
   const actions = [];
