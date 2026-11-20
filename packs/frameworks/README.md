@@ -1,6 +1,6 @@
 # UniversalTools: Frameworks
 
-Official tooling for Vue, Svelte, Astro and MDX, plus React snippets and refactoring.
+Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.
 
 Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
 
@@ -16,6 +16,8 @@ Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=uni
 | [unifiedjs.vscode-mdx](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) |
 | [burkeholland.simple-react-snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets) |
 | [razgraf.react-on-the-fly](https://marketplace.visualstudio.com/items?itemName=razgraf.react-on-the-fly) |
+| [antfu.slidev](https://marketplace.visualstudio.com/items?itemName=antfu.slidev) |
+| [tauri-apps.tauri-vscode](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) |
 
 ## License
 

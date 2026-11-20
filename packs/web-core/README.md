@@ -46,6 +46,8 @@ Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=uni
 | [jack89ita.open-file-from-path](https://marketplace.visualstudio.com/items?itemName=jack89ita.open-file-from-path) |
 | [jock.svg](https://marketplace.visualstudio.com/items?itemName=jock.svg) |
 | [kisstkondoros.vscode-gutter-preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview) |
+| [ms-edgedevtools.vscode-edge-devtools](https://marketplace.visualstudio.com/items?itemName=ms-edgedevtools.vscode-edge-devtools) |
+| [MS-vsliveshare.vsliveshare](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) |
 
 ## License
 

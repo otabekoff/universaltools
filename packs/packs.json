@@ -6,7 +6,18 @@
             "displayName": "UniversalTools: Web Core",
             "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
             "accent": "#FB923C",
-            "keywords": ["web development", "eslint", "prettier", "biome", "gitlens", "vitest", "playwright", "live server"],
+            "keywords": [
+                "web development",
+                "eslint",
+                "prettier",
+                "biome",
+                "gitlens",
+                "vitest",
+                "playwright",
+                "live server",
+                "edge devtools",
+                "live share"
+            ],
             "extensions": [
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
@@ -43,7 +54,9 @@
                 "DavidAnson.vscode-markdownlint",
                 "jack89ita.open-file-from-path",
                 "jock.svg",
-                "kisstkondoros.vscode-gutter-preview"
+                "kisstkondoros.vscode-gutter-preview",
+                "ms-edgedevtools.vscode-edge-devtools",
+                "MS-vsliveshare.vsliveshare"
             ]
         },
         {
@@ -51,7 +64,16 @@
             "displayName": "UniversalTools: HTML & CSS",
             "description": "HTML tags, Tailwind CSS, UnoCSS, Sass, PostCSS, Stylus, Stylelint and CSS helpers.",
             "accent": "#F472B6",
-            "keywords": ["html", "css", "tailwind", "unocss", "sass", "scss", "postcss", "stylelint"],
+            "keywords": [
+                "html",
+                "css",
+                "tailwind",
+                "unocss",
+                "sass",
+                "scss",
+                "postcss",
+                "stylelint"
+            ],
             "extensions": [
                 "formulahendry.auto-close-tag",
                 "vincaslt.highlight-matching-tag",
@@ -75,16 +97,27 @@
         {
             "dir": "frameworks",
             "displayName": "UniversalTools: Frameworks",
-            "description": "Official tooling for Vue, Svelte, Astro and MDX, plus React snippets and refactoring.",
+            "description": "Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.",
             "accent": "#34D399",
-            "keywords": ["vue", "svelte", "astro", "mdx", "react", "snippets"],
+            "keywords": [
+                "vue",
+                "svelte",
+                "astro",
+                "mdx",
+                "react",
+                "snippets",
+                "slidev",
+                "tauri"
+            ],
             "extensions": [
                 "Vue.volar",
                 "svelte.svelte-vscode",
                 "astro-build.astro-vscode",
                 "unifiedjs.vscode-mdx",
                 "burkeholland.simple-react-snippets",
-                "razgraf.react-on-the-fly"
+                "razgraf.react-on-the-fly",
+                "antfu.slidev",
+                "tauri-apps.tauri-vscode"
             ]
         },
         {
@@ -92,7 +125,12 @@
             "displayName": "UniversalTools: Quasar",
             "description": "Vue - Official plus IntelliSense for Quasar 2 components and Quasar CSS classes.",
             "accent": "#60A5FA",
-            "keywords": ["quasar", "quasar 2", "vue", "intellisense"],
+            "keywords": [
+                "quasar",
+                "quasar 2",
+                "vue",
+                "intellisense"
+            ],
             "extensions": [
                 "Vue.volar",
                 "simonhe.common-intellisense",
@@ -102,9 +140,20 @@
         {
             "dir": "everyday-tools",
             "displayName": "UniversalTools: Everyday Tools",
-            "description": "Code screenshots, translation, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
+            "description": "Code screenshots, translation, a code runner, saved terminal sessions, a PDF viewer, random data, a status bar clock, work-start tracking, folder formatting, plus a theme and file icons.",
             "accent": "#C084FC",
-            "keywords": ["codesnap", "screenshot", "translate", "random", "clock", "theme", "icons"],
+            "keywords": [
+                "codesnap",
+                "screenshot",
+                "translate",
+                "random",
+                "clock",
+                "theme",
+                "icons",
+                "code runner",
+                "terminal",
+                "pdf"
+            ],
             "extensions": [
                 "adpyke.codesnap",
                 "funkyremi.vscode-google-translate",
@@ -113,7 +162,10 @@
                 "madprops.when-did-i-start-working",
                 "lacroixdavid1.vscode-format-context-menu",
                 "PKief.material-icon-theme",
-                "ahmadawais.shades-of-purple"
+                "ahmadawais.shades-of-purple",
+                "formulahendry.code-runner",
+                "nguyenngoclong.terminal-keeper",
+                "tomoki1207.pdf"
             ]
         }
     ]

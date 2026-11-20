@@ -2,6 +2,16 @@
 
 All notable changes to the "universaltools" extension pack will be documented in this file.
 
+## [4.2.0]
+
+### Added
+
+- **Web Core:** Microsoft Edge Tools (`ms-edgedevtools.vscode-edge-devtools`), Live Share (`MS-vsliveshare.vsliveshare`)
+- **Frameworks:** Slidev (`antfu.slidev`), Tauri (`tauri-apps.tauri-vscode`)
+- **Everyday Tools:** Code Runner (`formulahendry.code-runner`), Terminal Keeper (`nguyenngoclong.terminal-keeper`), vscode-pdf (`tomoki1207.pdf`)
+
+All seven were checked on the VS Code Marketplace: published, not deprecated, and maintained.
+
 ## [4.0.0]
 
 A clean-up release: deprecated and unmaintained extensions are removed, and modern replacements are added.

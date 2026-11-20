@@ -2,7 +2,7 @@
     "name": "universaltools",
     "displayName": "UniversalTools",
     "description": "A curated set of web-development extension packs (Web Core, HTML & CSS, Frameworks, Quasar, Everyday Tools) installed in one click, with recommended settings and a pack health check.",
-    "version": "4.0.0",
+    "version": "4.2.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

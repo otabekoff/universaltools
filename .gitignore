@@ -4,3 +4,4 @@ node_modules/
 __pycache__/
 installed-extensions.txt
 dist/
+node_modules
