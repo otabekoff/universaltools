@@ -2,7 +2,7 @@
 
 Remote SSH and Remote Explorer, PowerShell, ShellCheck and shell-format for scripts, and support for nginx, Apache and systemd config files, log files and CSV.
 
-A standalone UniversalTools pack. The main [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools) web pack does not install it; install it on its own when you need these extensions.
+Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
 
 **Developer:** [Otabek Sadiridinov](https://github.com/otabekoff) · [Source code](https://github.com/otabekoff/universaltools/tree/master/packs/devops) · [Report an issue](https://github.com/otabekoff/universaltools/issues)
 

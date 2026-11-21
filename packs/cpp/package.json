@@ -2,7 +2,7 @@
     "name": "universaltools-cpp",
     "displayName": "UniversalTools: C/C++",
     "description": "The Microsoft C/C++ Extension Pack (IntelliSense, debugging, CMake Tools, C/C++ DevTools, themes), CMake IntelliSense, Makefile Tools, TestMate C++ and the CodeLLDB debugger.",
-    "version": "4.4.0",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

@@ -2,7 +2,7 @@
 
 The Microsoft C/C++ Extension Pack (IntelliSense, debugging, CMake Tools, C/C++ DevTools, themes), CMake IntelliSense, Makefile Tools, TestMate C++ and the CodeLLDB debugger.
 
-A standalone UniversalTools pack. The main [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools) web pack does not install it; install it on its own when you need these extensions.
+Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools), which installs this pack together with the other UniversalTools packs. Install this one on its own if you only need these extensions.
 
 **Developer:** [Otabek Sadiridinov](https://github.com/otabekoff) · [Source code](https://github.com/otabekoff/universaltools/tree/master/packs/cpp) · [Report an issue](https://github.com/otabekoff/universaltools/issues)
 

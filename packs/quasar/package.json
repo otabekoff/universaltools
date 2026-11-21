@@ -2,7 +2,7 @@
     "name": "universaltools-quasar",
     "displayName": "UniversalTools: Quasar",
     "description": "Vue - Official plus IntelliSense for Quasar 2 components and Quasar CSS classes.",
-    "version": "4.4.0",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

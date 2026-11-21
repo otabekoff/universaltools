@@ -2,6 +2,13 @@
 
 All notable changes to the "universaltools" extension pack will be documented in this file.
 
+## [4.6.0]
+
+### Changed
+
+- **UniversalTools now installs all 14 packs.** Besides the five web packs, it now also installs the Python, C/C++, Rust, Dart & Flutter, Java & Kotlin, Mobile, Go, AI and DevOps & Config packs. Each pack is still on the Marketplace on its own, if you only want part of the set.
+- **Remove Extensions Dropped in 4.0** no longer offers the Java, Python/Jupyter, C/C++ and React Native extensions, because UniversalTools installs them again.
+
 ## [4.4.0]
 
 ### New standalone packs
