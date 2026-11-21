@@ -35,13 +35,4 @@ module.exports = [
       "vscode-icons-team.vscode-icons",
     ],
   },
-  {
-    label: "Other languages: not deprecated, now in the UniversalTools language packs (Python, C/C++, Java & Kotlin, Mobile). Keep them if you use these languages",
-    preselect: false,
-    ids: [
-      "redhat.java", "vscjava.vscode-java-debug", "vscjava.vscode-java-test",
-      "ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter", "ms-toolsai.jupyter-renderers",
-      "ms-vscode.cpptools", "msjsdiag.vscode-react-native",
-    ],
-  },
 ];

@@ -84,5 +84,69 @@
         "formulahendry.code-runner",
         "nguyenngoclong.terminal-keeper",
         "tomoki1207.pdf"
+    ],
+    "universaltools.universaltools-python": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "charliermarsh.ruff",
+        "ms-toolsai.jupyter",
+        "ms-python.mypy-type-checker"
+    ],
+    "universaltools.universaltools-cpp": [
+        "ms-vscode.cpptools-extension-pack",
+        "KylinIdeTeam.cmake-intellisence",
+        "ms-vscode.makefile-tools",
+        "matepek.vscode-catch2-test-adapter",
+        "vadimcn.vscode-lldb"
+    ],
+    "universaltools.universaltools-rust": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "tamasfe.even-better-toml",
+        "fill-labs.dependi"
+    ],
+    "universaltools.universaltools-dart-flutter": [
+        "Dart-Code.dart-code",
+        "Dart-Code.flutter"
+    ],
+    "universaltools.universaltools-java-kotlin": [
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-dependency",
+        "JetBrains.kotlin-server"
+    ],
+    "universaltools.universaltools-mobile": [
+        "expo.vscode-expo-tools",
+        "msjsdiag.vscode-react-native"
+    ],
+    "universaltools.universaltools-go": [
+        "golang.go"
+    ],
+    "universaltools.universaltools-ai": [
+        "anthropic.claude-code",
+        "openai.chatgpt",
+        "Google.google-antigravity",
+        "Google.geminicodeassist",
+        "saoudrizwan.claude-dev",
+        "Continue.continue",
+        "Ollama.ollama",
+        "HuggingFace.huggingface-vscode-chat"
+    ],
+    "universaltools.universaltools-devops": [
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.PowerShell",
+        "timonwong.shellcheck",
+        "foxundermoon.shell-format",
+        "ahmadalli.vscode-nginx-conf",
+        "mrmlnc.vscode-apache",
+        "coolbear.systemd-unit-file",
+        "emilast.LogFileHighlighter",
+        "mechatroner.rainbow-csv"
     ]
 }

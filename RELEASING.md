@@ -5,7 +5,7 @@ Releases are automatic. When a pull request that changes `"version"` in `package
 1. checks that `packs/` matches `packs/packs.json` and every extension against the Marketplace,
 2. builds a `.vsix` for every pack in `packs/packs.json` plus the main pack into `dist/` (15 as of 4.4.0), installs them into a clean VS Code and runs the integration tests,
 3. creates the GitHub release `vX.Y.Z` with every `.vsix` file attached and the matching `CHANGELOG.md` section as notes,
-4. publishes to the VS Code Marketplace, and to Open VSX if enabled, in this order: the web sub-packs, then the main pack (which installs them), then the standalone language packs. One failure does not stop the others; the job fails at the end and lists every extension that failed.
+4. publishes to the VS Code Marketplace, and to Open VSX if enabled, in this order: the sub-packs the main pack installs (all of them as of 4.6.0), then the main pack, then any standalone packs (`"includeInMain": false` in `packs/packs.json`). One failure does not stop the others; the job fails at the end and lists every extension that failed.
 
 All extensions share the version in the root `package.json`; `npm run sync` copies it into `packs/`.
 
@@ -114,8 +114,7 @@ From the next release on, the workflow publishes to Open VSX with `ovsx publish 
 npm ci
 npm test                   # sync check + verify + package + install test + integration tests
 npx vsce login universaltools
-# web sub-packs first, then the main pack, then the language packs
-npx vsce publish --skip-duplicate --packagePath dist/universaltools-web-core-X.Y.Z.vsix   # ...and the other web sub-packs
+# sub-packs first, then the main pack
+npx vsce publish --skip-duplicate --packagePath dist/universaltools-web-core-X.Y.Z.vsix   # ...and the other sub-packs
 npx vsce publish --skip-duplicate --packagePath dist/universaltools-X.Y.Z.vsix
-npx vsce publish --skip-duplicate --packagePath dist/universaltools-python-X.Y.Z.vsix     # ...and the other language packs
 ```

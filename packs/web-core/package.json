@@ -2,7 +2,7 @@
     "name": "universaltools-web-core",
     "displayName": "UniversalTools: Web Core",
     "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
-    "version": "4.4.0",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

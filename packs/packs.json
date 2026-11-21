@@ -1,5 +1,5 @@
 {
-    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone packs (languages, AI, DevOps) that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide, custom:<name> or file:<name> from scripts/icons); \"iconColor\" overrides the default white; an accent like \"#E34F26>#1572B6\" is a diagonal gradient; run `npm run icon` after changing them.",
+    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. The main UniversalTools pack installs every pack listed here; add \"includeInMain\": false to a pack to publish it on its own without the main pack installing it. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide, custom:<name> or file:<name> from scripts/icons); \"iconColor\" overrides the default white; an accent like \"#E34F26>#1572B6\" is a diagonal gradient; run `npm run icon` after changing them.",
     "main": {
         "accent": "#FBBF24",
         "icon": "lucide:code-xml",
@@ -184,7 +184,6 @@
             "description": "Python language support, Pylance, debugging, environments, Ruff linting and formatting, Jupyter notebooks and Mypy type checking.",
             "accent": "#3776AB",
             "icon": "si:python",
-            "includeInMain": false,
             "keywords": [
                 "python",
                 "pylance",
@@ -209,7 +208,6 @@
             "description": "The Microsoft C/C++ Extension Pack (IntelliSense, debugging, CMake Tools, C/C++ DevTools, themes), CMake IntelliSense, Makefile Tools, TestMate C++ and the CodeLLDB debugger.",
             "accent": "#00599C",
             "icon": "file:cpp-mark",
-            "includeInMain": false,
             "keywords": [
                 "c",
                 "c++",
@@ -235,7 +233,6 @@
             "description": "rust-analyzer, the CodeLLDB debugger, Cargo.toml support and crate version hints.",
             "accent": "#292524",
             "icon": "si:rust",
-            "includeInMain": false,
             "keywords": [
                 "rust",
                 "rust-analyzer",
@@ -256,7 +253,6 @@
             "description": "Official Dart and Flutter support.",
             "accent": "#0AA0E6",
             "icon": "si:flutter",
-            "includeInMain": false,
             "keywords": [
                 "dart",
                 "flutter",
@@ -273,7 +269,6 @@
             "description": "Java language support, debugging, tests, Maven, Gradle and project management, plus the official Kotlin extension by JetBrains.",
             "accent": "#7F52FF",
             "icon": "si:kotlin",
-            "includeInMain": false,
             "keywords": [
                 "java",
                 "kotlin",
@@ -297,7 +292,6 @@
             "description": "React Native and Expo development tools.",
             "accent": "#0F766E",
             "icon": "si:react",
-            "includeInMain": false,
             "keywords": [
                 "react native",
                 "expo",
@@ -314,7 +308,6 @@
             "description": "Official Go language support.",
             "accent": "#0080B0",
             "icon": "si:go",
-            "includeInMain": false,
             "keywords": [
                 "go",
                 "golang"
@@ -329,7 +322,6 @@
             "description": "AI coding agents and assistants: Claude Code, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider for Copilot Chat (GitHub Copilot Chat itself is built into VS Code).",
             "accent": "#7C3AED",
             "icon": "lucide:sparkles",
-            "includeInMain": false,
             "keywords": [
                 "ai",
                 "claude",
@@ -361,7 +353,6 @@
             "description": "Remote SSH and Remote Explorer, PowerShell, ShellCheck and shell-format for scripts, and support for nginx, Apache and systemd config files, log files and CSV.",
             "accent": "#0F766E",
             "icon": "lucide:server",
-            "includeInMain": false,
             "keywords": [
                 "devops",
                 "ssh",

@@ -2,7 +2,7 @@
     "name": "universaltools-ai",
     "displayName": "UniversalTools: AI",
     "description": "AI coding agents and assistants: Claude Code, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider for Copilot Chat (GitHub Copilot Chat itself is built into VS Code).",
-    "version": "4.4.0",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

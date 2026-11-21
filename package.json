@@ -1,8 +1,8 @@
 {
     "name": "universaltools",
     "displayName": "UniversalTools",
-    "description": "A curated set of web-development extension packs (Web Core, HTML & CSS, Frameworks, Quasar, Everyday Tools) installed in one click, with recommended settings and a pack health check. Provided by Otabek Sadiridinov via MohirLab (mohirlab.uz).",
-    "version": "4.4.0",
+    "description": "A curated set of extension packs installed in one click: web development (Web Core, HTML & CSS, Frameworks, Quasar, Everyday Tools), languages (Python, C/C++, Rust, Dart & Flutter, Java & Kotlin, Mobile, Go), AI assistants and DevOps tools, with recommended settings and a pack health check. Provided by Otabek Sadiridinov via MohirLab (mohirlab.uz).",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",
@@ -42,7 +42,16 @@
         "prettier",
         "eslint",
         "biome",
-        "node"
+        "node",
+        "python",
+        "c++",
+        "rust",
+        "flutter",
+        "java",
+        "kotlin",
+        "go",
+        "ai",
+        "devops"
     ],
     "main": "./extension.js",
     "activationEvents": [],
@@ -166,6 +175,15 @@
         "universaltools.universaltools-html-css",
         "universaltools.universaltools-frameworks",
         "universaltools.universaltools-quasar",
-        "universaltools.universaltools-everyday-tools"
+        "universaltools.universaltools-everyday-tools",
+        "universaltools.universaltools-python",
+        "universaltools.universaltools-cpp",
+        "universaltools.universaltools-rust",
+        "universaltools.universaltools-dart-flutter",
+        "universaltools.universaltools-java-kotlin",
+        "universaltools.universaltools-mobile",
+        "universaltools.universaltools-go",
+        "universaltools.universaltools-ai",
+        "universaltools.universaltools-devops"
     ]
 }

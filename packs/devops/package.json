@@ -2,7 +2,7 @@
     "name": "universaltools-devops",
     "displayName": "UniversalTools: DevOps & Config",
     "description": "Remote SSH and Remote Explorer, PowerShell, ShellCheck and shell-format for scripts, and support for nginx, Apache and systemd config files, log files and CSV.",
-    "version": "4.4.0",
+    "version": "4.6.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

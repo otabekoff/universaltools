@@ -1,6 +1,6 @@
 # UniversalTools
 
-A curated extension pack for web development: Vue, React, Svelte, Astro, Tailwind, Vite/Vitest, Node.js and more, installed in one click.
+A curated extension pack, installed in one click: web development (Vue, React, Svelte, Astro, Tailwind, Vite/Vitest, Node.js and more), languages (Python, C/C++, Rust, Dart & Flutter, Java & Kotlin, React Native/Expo, Go), AI assistants and DevOps tools.
 
 **Developer:** [Otabek Sadiridinov](https://github.com/otabekoff) · [Source code](https://github.com/otabekoff/universaltools) · [Report an issue](https://github.com/otabekoff/universaltools/issues)
 
@@ -17,7 +17,9 @@ Besides installing the extensions, UniversalTools:
 
 ## What's included
 
-UniversalTools installs five smaller packs. Install any of them on its own if you only need part of the set.
+UniversalTools installs the 14 packs below. Each one is also on the Marketplace on its own: install only the packs you need if you don't want the whole set.
+
+### Web development
 
 | Pack | What it contains |
 |---|---|
@@ -27,11 +29,7 @@ UniversalTools installs five smaller packs. Install any of them on its own if yo
 | [UniversalTools: Quasar](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-quasar) | Vue - Official, Common Intellisense (Quasar 2 components), Quasar IntelliSense (Quasar CSS classes) |
 | [UniversalTools: Everyday Tools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-everyday-tools) | CodeSnap, Google Translate, Code Runner, Terminal Keeper, PDF viewer, Random Everything, DateTime, When Did I Start Working, Format in Context Menus · Material Icon Theme, Shades of Purple theme |
 
-The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
-
-## Standalone packs
-
-Separate packs for other languages, AI assistants and DevOps work. The main UniversalTools pack does **not** install these; install the ones you need.
+### Languages, AI and DevOps
 
 | Pack | What it contains |
 |---|---|
@@ -44,6 +42,8 @@ Separate packs for other languages, AI assistants and DevOps work. The main Univ
 | [UniversalTools: Go](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-go) | Go |
 | [UniversalTools: AI](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-ai) | Claude Code, Codex (OpenAI), Google Antigravity, Gemini Code Assist, Cline, Continue, Ollama, Hugging Face provider for Copilot Chat. GitHub Copilot Chat is built into VS Code, so it is not listed. |
 | [UniversalTools: DevOps & Config](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-devops) | Remote - SSH, Remote Explorer, PowerShell, ShellCheck, shell-format, NGINX configuration, Apache Conf, systemd unit files, Log File Highlighter, Rainbow CSV |
+
+The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
 
 ## Upgrading from 3.x
 
@@ -78,7 +78,7 @@ The easiest way: run **UniversalTools: Remove Extensions Dropped in 4.0** from t
 
 </details>
 
-Java, Python/Jupyter, C++ and React Native extensions were moved out of this pack. Keep them installed if you use those languages.
+Java, Python/Jupyter, C++ and React Native extensions are not on this list: since 4.6.0 UniversalTools installs them again through its language packs.
 
 ## Recommended settings
 
