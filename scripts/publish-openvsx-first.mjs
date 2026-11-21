@@ -1,4 +1,4 @@
-// ONE-TIME: publishes every .vsix in dist/ to Open VSX with an access token, sub-packs first.
+// ONE-TIME: publishes every .vsix in dist/ to Open VSX with an access token, web sub-packs first, then the main pack, then the language packs.
 // Open VSX Trusted Publishing only works for extensions that already exist there, so the very
 // first version must be uploaded this way. After that, the Release workflow publishes with
 // Trusted Publishing and no token. See RELEASING.md.

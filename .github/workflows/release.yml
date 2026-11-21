@@ -132,12 +132,21 @@ jobs:
         with:
           name: vsix
           path: dist
-      - name: Publish to the VS Code Marketplace (sub-packs first, then the main pack)
+      # Order: web sub-packs, main pack, language packs (see vsixFiles in scripts/packs.mjs).
+      # One failure does not stop the rest; the step fails at the end listing every failure,
+      # and "Re-run failed jobs" then retries only those (--skip-duplicate skips the rest).
+      - name: Publish to the VS Code Marketplace
         run: |
+          failed=()
           for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
-            echo "Publishing $f"
-            npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+            echo "::group::Publishing $f"
+            npx vsce publish --oidc ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f" || failed+=("$f")
+            echo "::endgroup::"
           done
+          if (( ${#failed[@]} )); then
+            for f in "${failed[@]}"; do echo "::error::Failed to publish $f"; done
+            exit 1
+          fi
 
   open-vsx:
     # Optional: set the repository variable PUBLISH_OPENVSX=true to enable (after the one-time setup in RELEASING.md).
@@ -160,9 +169,15 @@ jobs:
         with:
           name: vsix
           path: dist
-      - name: Publish to Open VSX (sub-packs first, then the main pack)
+      - name: Publish to Open VSX
         run: |
+          failed=()
           for f in $(node --input-type=module -e "import { vsixFiles } from './scripts/packs.mjs'; console.log(vsixFiles().join(' '))"); do
-            echo "Publishing $f"
-            npx ovsx publish --trusted-publishing ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f"
+            echo "::group::Publishing $f"
+            npx ovsx publish --trusted-publishing ${{ needs.build.outputs.pre-release }} --skip-duplicate --packagePath "dist/$f" || failed+=("$f")
+            echo "::endgroup::"
           done
+          if (( ${#failed[@]} )); then
+            for f in "${failed[@]}"; do echo "::error::Failed to publish $f"; done
+            exit 1
+          fi

@@ -1,4 +1,4 @@
-// Installs every built .vsix from dist/ (sub-packs first, then the main pack) into a throwaway
+// Installs every built .vsix from dist/ (web sub-packs, main pack, language packs) into a throwaway
 // VS Code profile and checks that every pack and every extension they list was installed.
 //
 // Usage:

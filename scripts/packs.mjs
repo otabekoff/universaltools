@@ -32,8 +32,18 @@ export function leafExtensions() {
   return out;
 }
 
-/** .vsix file names in dist/, sub-packs first and the main pack last (publishing order). */
+/**
+ * .vsix file names in dist/, in publishing order: the sub-packs the main pack installs, then the
+ * main pack, then the standalone language packs. The main pack depends only on the first group,
+ * so a failure on a language pack (such as the Marketplace's limit on creating new extensions)
+ * cannot hold it back.
+ */
 export function vsixFiles(version = rootPkg().version) {
-  const subs = packDefs().map((def) => `${packName(def)}-${version}.vsix`);
-  return [...subs, `${rootPkg().name}-${version}.vsix`];
+  const file = (def) => `${packName(def)}-${version}.vsix`;
+  const defs = packDefs();
+  return [
+    ...defs.filter(inMain).map(file),
+    `${rootPkg().name}-${version}.vsix`,
+    ...defs.filter((def) => !inMain(def)).map(file),
+  ];
 }
