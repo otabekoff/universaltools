@@ -32,7 +32,6 @@
                 "VoidZero.vite-plus-extension-pack",
                 "EditorConfig.EditorConfig",
                 "eamodio.gitlens",
-                "donjayamanne.githistory",
                 "GitHub.vscode-pull-request-github",
                 "GitHub.vscode-github-actions",
                 "ms-vscode.live-server",

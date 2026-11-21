@@ -13,11 +13,11 @@ Not installed by the main UniversalTools web pack; install the ones you need.
 
 ### Changed
 
-- **Web Core:** Oxc and Vitest are now installed through the Vite Plus Extension Pack (`VoidZero.vite-plus-extension-pack`), which contains exactly those two. Added Git History (`donjayamanne.githistory`).
+- **Web Core:** Oxc and Vitest are now installed through the Vite Plus Extension Pack (`VoidZero.vite-plus-extension-pack`), which contains exactly those two. Git history is covered by GitLens and VS Code's built-in Source Control Graph, so Git History (`donjayamanne.githistory`, dropped in 4.0) stays out.
 - **C/C++:** C/C++ and CMake Tools are now installed through Microsoft's C/C++ Extension Pack (`ms-vscode.cpptools-extension-pack`), which also adds C/C++ DevTools and C/C++ Themes. Added CMake IntelliSense (`KylinIdeTeam.cmake-intellisence`) and TestMate C++ (`matepek.vscode-catch2-test-adapter`).
 - README and extension description now credit the pack as provided by Otabek Sadiridinov via [MohirLab](https://mohirlab.uz).
 
-Every extension was checked on the VS Code Marketplace in November 2026: published and not deprecated. Git History (last updated 2023) and Apache Conf (2019) are no longer updated but still work, and nothing maintained replaces them.
+Every extension was checked on the VS Code Marketplace in November 2026: published and not deprecated. Apache Conf (last updated 2019) is no longer updated but still works, and nothing maintained replaces it.
 
 ## [4.2.0]
 

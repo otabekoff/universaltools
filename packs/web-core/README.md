@@ -16,7 +16,6 @@ Part of [UniversalTools](https://marketplace.visualstudio.com/items?itemName=uni
 | [VoidZero.vite-plus-extension-pack](https://marketplace.visualstudio.com/items?itemName=VoidZero.vite-plus-extension-pack) |
 | [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) |
 | [eamodio.gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) |
-| [donjayamanne.githistory](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) |
 | [GitHub.vscode-pull-request-github](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) |
 | [GitHub.vscode-github-actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions) |
 | [ms-vscode.live-server](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) |
