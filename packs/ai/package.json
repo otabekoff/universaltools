@@ -1,0 +1,57 @@
+{
+    "name": "universaltools-ai",
+    "displayName": "UniversalTools: AI",
+    "description": "AI coding agents and assistants: Claude Code, GitHub Copilot Chat, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider.",
+    "version": "4.4.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/ai#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/ai"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "ai",
+        "claude",
+        "copilot",
+        "codex",
+        "chatgpt",
+        "gemini",
+        "antigravity",
+        "cline",
+        "continue",
+        "ollama",
+        "hugging face",
+        "agent"
+    ],
+    "extensionPack": [
+        "anthropic.claude-code",
+        "GitHub.copilot-chat",
+        "openai.chatgpt",
+        "Google.google-antigravity",
+        "Google.geminicodeassist",
+        "saoudrizwan.claude-dev",
+        "Continue.continue",
+        "Ollama.ollama",
+        "HuggingFace.huggingface-vscode-chat"
+    ]
+}

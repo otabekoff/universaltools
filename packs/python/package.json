@@ -2,7 +2,7 @@
     "name": "universaltools-python",
     "displayName": "UniversalTools: Python",
     "description": "Python language support, Pylance, debugging, environments, Ruff linting and formatting, Jupyter notebooks and Mypy type checking.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

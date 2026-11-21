@@ -2,7 +2,7 @@
     "name": "universaltools-frameworks",
     "displayName": "UniversalTools: Frameworks",
     "description": "Official tooling for Vue, Svelte, Astro and MDX, React snippets and refactoring, plus Slidev presentations and Tauri desktop apps.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

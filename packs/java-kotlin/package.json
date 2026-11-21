@@ -2,7 +2,7 @@
     "name": "universaltools-java-kotlin",
     "displayName": "UniversalTools: Java & Kotlin",
     "description": "Java language support, debugging, tests, Maven, Gradle and project management, plus the official Kotlin extension by JetBrains.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

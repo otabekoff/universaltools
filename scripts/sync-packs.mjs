@@ -64,7 +64,7 @@ ${def.description}
 ${
   inMain(def)
     ? `Part of [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}), which installs this pack together with the other UniversalTools web packs. Install this one on its own if you only need these extensions.`
-    : `A standalone UniversalTools language pack. The main [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}) web pack does not install it; install it on its own when you work in this language.`
+    : `A standalone UniversalTools pack. The main [UniversalTools](${marketplace(`${main.publisher}.${main.name}`)}) web pack does not install it; install it on its own when you need these extensions.`
 }
 
 **Developer:** [${main.author.name}](${main.author.url}) · [Source code](${repo}/tree/master/packs/${def.dir}) · [Report an issue](${main.bugs.url})

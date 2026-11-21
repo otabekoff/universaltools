@@ -2,7 +2,7 @@
 
 UniversalTools installs five packs of web-development extensions:
 
-- **Web Core:** ESLint, Prettier, Biome, GitLens, GitHub Pull Requests, Live Preview, Edge DevTools, Live Share, Vitest, Playwright, Error Lens and more
+- **Web Core:** ESLint, Prettier, Biome, GitLens, Git History, GitHub Pull Requests, Live Preview, Edge DevTools, Live Share, Vitest, Playwright, Error Lens and more
 - **HTML & CSS:** Tailwind CSS, UnoCSS, PostCSS, Sass, Stylelint, CSS Peek, Auto Close Tag
 - **Frameworks:** Vue, Svelte, Astro, MDX, React snippets, Slidev, Tauri
 - **Quasar:** Vue plus Quasar 2 component and CSS class IntelliSense
