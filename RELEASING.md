@@ -5,7 +5,7 @@ Releases are automatic. When a pull request that changes `"version"` in `package
 1. checks that `packs/` matches `packs/packs.json` and every extension against the Marketplace,
 2. builds a `.vsix` for every pack in `packs/packs.json` plus the main pack into `dist/` (13 as of 4.2.0), installs them into a clean VS Code and runs the integration tests,
 3. creates the GitHub release `vX.Y.Z` with every `.vsix` file attached and the matching `CHANGELOG.md` section as notes,
-4. publishes to the VS Code Marketplace, and to Open VSX if enabled: sub-packs first, then the main pack, because the main pack installs them.
+4. publishes to the VS Code Marketplace, and to Open VSX if enabled, in this order: the web sub-packs, then the main pack (which installs them), then the standalone language packs. One failure does not stop the others; the job fails at the end and lists every extension that failed.
 
 All extensions share the version in the root `package.json`; `npm run sync` copies it into `packs/`.
 
@@ -19,6 +19,10 @@ Merges that do not change the version do nothing. Pushing a tag `vX.Y.Z` that ma
 4. Merge it. The release follows within a few minutes; watch it under **Actions → Release**.
 
 The Marketplace accepts only `major.minor.patch` versions, and each version can be published once.
+
+## If publishing fails partway
+
+The Marketplace allows only about **7 new extensions per 12 hours**; updating existing ones is not limited. A release that adds more new packs than that will fail on the rest with *"You have exceeded the maximum number of extensions that can be created in 12 hour(s)"*. Wait until the earliest creations are 12 hours old, then use **Re-run failed jobs** on the run (or `gh run rerun <run-id> --failed`). Extensions already at the new version are skipped (`--skip-duplicate`), so only the missing ones are published.
 
 ## Pre-releases
 
@@ -87,7 +91,7 @@ Note: 12 of the 69 extensions in the packs are not on Open VSX (for example Simp
    npm run package
    $env:OVSX_PAT = "<token>"; npm run publish:openvsx-first; Remove-Item Env:OVSX_PAT
    ```
-   This uploads the five sub-packs, then the main pack. Delete the token on open-vsx.org afterwards; it is not needed again.
+   This uploads the web sub-packs, the main pack, then the language packs. Delete the token on open-vsx.org afterwards; it is not needed again.
 5. **Trusted Publishers:** under **Trusted Publishers**, create **one registration per extension**: `universaltools` plus one `universaltools-<dir>` for every pack in `packs/packs.json`. For each, choose the `universaltools` namespace and the extension, provider **GitHub Actions**, and enter:
 
    | Field | Enter |
@@ -110,7 +114,8 @@ From the next release on, the workflow publishes to Open VSX with `ovsx publish 
 npm ci
 npm test                   # sync check + verify + package + install test + integration tests
 npx vsce login universaltools
-# sub-packs first, then the main pack
-npx vsce publish --skip-duplicate --packagePath dist/universaltools-web-core-X.Y.Z.vsix   # ...and the other sub-packs
-npx vsce publish --packagePath dist/universaltools-X.Y.Z.vsix
+# web sub-packs first, then the main pack, then the language packs
+npx vsce publish --skip-duplicate --packagePath dist/universaltools-web-core-X.Y.Z.vsix   # ...and the other web sub-packs
+npx vsce publish --skip-duplicate --packagePath dist/universaltools-X.Y.Z.vsix
+npx vsce publish --skip-duplicate --packagePath dist/universaltools-python-X.Y.Z.vsix     # ...and the other language packs
 ```
