@@ -209,6 +209,10 @@ The code is plain JavaScript with no build step: [extension.js](extension.js) ho
 
 Releases are automated: see [RELEASING.md](RELEASING.md).
 
+## Credits
+
+Provided by [Otabek Sadiridinov](https://github.com/otabekoff) via [MohirLab](https://mohirlab.uz).
+
 ## License
 
 [MIT](LICENSE)
