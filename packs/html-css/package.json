@@ -2,7 +2,7 @@
     "name": "universaltools-html-css",
     "displayName": "UniversalTools: HTML & CSS",
     "description": "HTML tags, Tailwind CSS, UnoCSS, Sass, PostCSS, Stylus, Stylelint and CSS helpers.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

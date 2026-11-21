@@ -21,7 +21,7 @@ UniversalTools installs five smaller packs. Install any of them on its own if yo
 
 | Pack | What it contains |
 |---|---|
-| [UniversalTools: Web Core](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-web-core) | ESLint, Prettier, Biome, Oxc, EditorConfig · GitLens, GitHub Pull Requests, GitHub Actions · Live Preview, Live Server, Open in Browser, Firefox Debugger, Microsoft Edge Tools · Live Share · Vitest, Playwright · npm and Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv · Prisma, Container Tools, YAML, TOML, XML · Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path, SVG, Image preview |
+| [UniversalTools: Web Core](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-web-core) | ESLint, Prettier, Biome, EditorConfig · Vite Plus Extension Pack (Oxc, Vitest) · GitLens, GitHub Pull Requests, GitHub Actions · Live Preview, Live Server, Open in Browser, Firefox Debugger, Microsoft Edge Tools · Live Share · Playwright · npm and Path IntelliSense, npm Browser, Import Cost, REST Client, dotenv · Prisma, Container Tools, YAML, TOML, XML · Error Lens, Pretty TypeScript Errors, Code Spell Checker, Better Todo Tree, i18n Ally, Iconify, Markdown All in One, markdownlint, Open file from path, SVG, Image preview |
 | [UniversalTools: HTML & CSS](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-html-css) | Auto Close Tag, Highlight Matching Tag, Split HTML Attributes, Emmet Live · Tailwind CSS, UnoCSS, PostCSS, Stylelint · CSS IntelliSense for HTML, CSS Peek, Some Sass, Sass (indented), Stylus, Live Sass Compiler, Color Highlight, HTML to CSS (two) |
 | [UniversalTools: Frameworks](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-frameworks) | Vue - Official, Svelte, Astro, MDX, Simple React Snippets, React on the fly, Slidev, Tauri |
 | [UniversalTools: Quasar](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-quasar) | Vue - Official, Common Intellisense (Quasar 2 components), Quasar IntelliSense (Quasar CSS classes) |
@@ -29,19 +29,21 @@ UniversalTools installs five smaller packs. Install any of them on its own if yo
 
 The full lists are in [packs/packs.json](https://github.com/otabekoff/universaltools/blob/master/packs/packs.json).
 
-## Language packs
+## Standalone packs
 
-Separate packs for other languages. The main UniversalTools pack does **not** install these; install the ones you need.
+Separate packs for other languages, AI assistants and DevOps work. The main UniversalTools pack does **not** install these; install the ones you need.
 
 | Pack | What it contains |
 |---|---|
 | [UniversalTools: Python](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-python) | Python, Pylance, Python Debugger, Python Environments, Ruff, Jupyter, Mypy |
-| [UniversalTools: C/C++](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-cpp) | C/C++, CMake Tools, Makefile Tools, CodeLLDB |
+| [UniversalTools: C/C++](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-cpp) | C/C++ Extension Pack (C/C++, CMake Tools, C/C++ DevTools, C/C++ Themes), CMake IntelliSense, Makefile Tools, TestMate C++, CodeLLDB |
 | [UniversalTools: Rust](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-rust) | rust-analyzer, CodeLLDB, Even Better TOML, Dependi |
 | [UniversalTools: Dart & Flutter](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-dart-flutter) | Dart, Flutter |
 | [UniversalTools: Java & Kotlin](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-java-kotlin) | Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains |
 | [UniversalTools: Mobile](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-mobile) | Expo Tools, React Native Tools |
 | [UniversalTools: Go](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-go) | Go |
+| [UniversalTools: AI](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-ai) | Claude Code, Codex (OpenAI), Google Antigravity, Gemini Code Assist, Cline, Continue, Ollama, Hugging Face provider for Copilot Chat. GitHub Copilot Chat is built into VS Code, so it is not listed. |
+| [UniversalTools: DevOps & Config](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-devops) | Remote - SSH, Remote Explorer, PowerShell, ShellCheck, shell-format, NGINX configuration, Apache Conf, systemd unit files, Log File Highlighter, Rainbow CSV |
 
 ## Upgrading from 3.x
 

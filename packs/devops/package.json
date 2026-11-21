@@ -1,0 +1,57 @@
+{
+    "name": "universaltools-devops",
+    "displayName": "UniversalTools: DevOps & Config",
+    "description": "Remote SSH and Remote Explorer, PowerShell, ShellCheck and shell-format for scripts, and support for nginx, Apache and systemd config files, log files and CSV.",
+    "version": "4.4.0",
+    "publisher": "universaltools",
+    "author": {
+        "name": "Otabek Sadiridinov",
+        "url": "https://github.com/otabekoff"
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#3F51D8",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/otabekoff/universaltools/tree/master/packs/devops#readme",
+    "bugs": {
+        "url": "https://github.com/otabekoff/universaltools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/otabekoff/universaltools",
+        "directory": "packs/devops"
+    },
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "keywords": [
+        "devops",
+        "ssh",
+        "remote",
+        "powershell",
+        "shell",
+        "bash",
+        "nginx",
+        "apache",
+        "systemd",
+        "logs",
+        "csv"
+    ],
+    "extensionPack": [
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.PowerShell",
+        "timonwong.shellcheck",
+        "foxundermoon.shell-format",
+        "ahmadalli.vscode-nginx-conf",
+        "mrmlnc.vscode-apache",
+        "coolbear.systemd-unit-file",
+        "emilast.LogFileHighlighter",
+        "mechatroner.rainbow-csv"
+    ]
+}

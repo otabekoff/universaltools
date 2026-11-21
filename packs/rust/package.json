@@ -2,7 +2,7 @@
     "name": "universaltools-rust",
     "displayName": "UniversalTools: Rust",
     "description": "rust-analyzer, the CodeLLDB debugger, Cargo.toml support and crate version hints.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

@@ -2,7 +2,7 @@
     "name": "universaltools-go",
     "displayName": "UniversalTools: Go",
     "description": "Official Go language support.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",

@@ -2,6 +2,23 @@
 
 All notable changes to the "universaltools" extension pack will be documented in this file.
 
+## [4.4.0]
+
+### New standalone packs
+
+Not installed by the main UniversalTools web pack; install the ones you need.
+
+- **UniversalTools: AI:** Claude Code (`anthropic.claude-code`), Codex (`openai.chatgpt`), Google Antigravity (`Google.google-antigravity`), Gemini Code Assist (`Google.geminicodeassist`), Cline (`saoudrizwan.claude-dev`), Continue (`Continue.continue`), Ollama (`Ollama.ollama`), Hugging Face provider for Copilot Chat (`HuggingFace.huggingface-vscode-chat`). GitHub Copilot Chat is not listed because VS Code now ships it built in.
+- **UniversalTools: DevOps & Config:** Remote - SSH (`ms-vscode-remote.remote-ssh`), Remote Explorer (`ms-vscode.remote-explorer`), PowerShell (`ms-vscode.PowerShell`), ShellCheck (`timonwong.shellcheck`), shell-format (`foxundermoon.shell-format`), NGINX Configuration Language Support (`ahmadalli.vscode-nginx-conf`), Apache Conf (`mrmlnc.vscode-apache`), systemd unit files (`coolbear.systemd-unit-file`), Log File Highlighter (`emilast.LogFileHighlighter`), Rainbow CSV (`mechatroner.rainbow-csv`)
+
+### Changed
+
+- **Web Core:** Oxc and Vitest are now installed through the Vite Plus Extension Pack (`VoidZero.vite-plus-extension-pack`), which contains exactly those two. Git history is covered by GitLens and VS Code's built-in Source Control Graph, so Git History (`donjayamanne.githistory`, dropped in 4.0) stays out.
+- **C/C++:** C/C++ and CMake Tools are now installed through Microsoft's C/C++ Extension Pack (`ms-vscode.cpptools-extension-pack`), which also adds C/C++ DevTools and C/C++ Themes. Added CMake IntelliSense (`KylinIdeTeam.cmake-intellisence`) and TestMate C++ (`matepek.vscode-catch2-test-adapter`).
+- README and extension description now credit the pack as provided by Otabek Sadiridinov via [MohirLab](https://mohirlab.uz).
+
+Every extension was checked on the VS Code Marketplace in November 2026: published and not deprecated. Apache Conf (last updated 2019) is no longer updated but still works, and nothing maintained replaces it.
+
 ## [4.2.0]
 
 ### Added

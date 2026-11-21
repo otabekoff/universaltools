@@ -2,7 +2,7 @@
     "name": "universaltools-web-core",
     "displayName": "UniversalTools: Web Core",
     "description": "Linting, formatting, Git and GitHub, preview, testing, Node.js and everyday editor helpers for web development.",
-    "version": "4.2.0",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",
@@ -39,13 +39,14 @@
         "playwright",
         "live server",
         "edge devtools",
-        "live share"
+        "live share",
+        "vite"
     ],
     "extensionPack": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "biomejs.biome",
-        "oxc.oxc-vscode",
+        "VoidZero.vite-plus-extension-pack",
         "EditorConfig.EditorConfig",
         "eamodio.gitlens",
         "GitHub.vscode-pull-request-github",
@@ -54,7 +55,6 @@
         "ritwickdey.LiveServer",
         "techer.open-in-browser",
         "firefox-devtools.vscode-firefox-debug",
-        "vitest.explorer",
         "ms-playwright.playwright",
         "christian-kohler.npm-intellisense",
         "christian-kohler.path-intellisense",

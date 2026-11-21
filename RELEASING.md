@@ -3,7 +3,7 @@
 Releases are automatic. When a pull request that changes `"version"` in `package.json` is merged into `master`, the [Release workflow](.github/workflows/release.yml):
 
 1. checks that `packs/` matches `packs/packs.json` and every extension against the Marketplace,
-2. builds a `.vsix` for every pack in `packs/packs.json` plus the main pack into `dist/` (13 as of 4.2.0), installs them into a clean VS Code and runs the integration tests,
+2. builds a `.vsix` for every pack in `packs/packs.json` plus the main pack into `dist/` (15 as of 4.4.0), installs them into a clean VS Code and runs the integration tests,
 3. creates the GitHub release `vX.Y.Z` with every `.vsix` file attached and the matching `CHANGELOG.md` section as notes,
 4. publishes to the VS Code Marketplace, and to Open VSX if enabled, in this order: the web sub-packs, then the main pack (which installs them), then the standalone language packs. One failure does not stop the others; the job fails at the end and lists every extension that failed.
 

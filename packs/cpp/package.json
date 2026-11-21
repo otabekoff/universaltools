@@ -1,8 +1,8 @@
 {
     "name": "universaltools-cpp",
     "displayName": "UniversalTools: C/C++",
-    "description": "C/C++ IntelliSense and debugging, CMake and Makefile projects, and the CodeLLDB debugger.",
-    "version": "4.2.0",
+    "description": "The Microsoft C/C++ Extension Pack (IntelliSense, debugging, CMake Tools, C/C++ DevTools, themes), CMake IntelliSense, Makefile Tools, TestMate C++ and the CodeLLDB debugger.",
+    "version": "4.4.0",
     "publisher": "universaltools",
     "author": {
         "name": "Otabek Sadiridinov",
@@ -35,12 +35,16 @@
         "cpp",
         "cmake",
         "makefile",
-        "lldb"
+        "lldb",
+        "testmate",
+        "catch2",
+        "gtest"
     ],
     "extensionPack": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools-extension-pack",
+        "KylinIdeTeam.cmake-intellisence",
         "ms-vscode.makefile-tools",
+        "matepek.vscode-catch2-test-adapter",
         "vadimcn.vscode-lldb"
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone language packs that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide, custom:<name> or file:<name> from scripts/icons); \"iconColor\" overrides the default white; an accent like \"#E34F26>#1572B6\" is a diagonal gradient; run `npm run icon` after changing them.",
+    "$comment": "Source of truth for the sub-packs. Edit this file, then run `npm run sync` to regenerate packs/<dir>/ and the main pack's list. Packs with \"includeInMain\": false are standalone packs (languages, AI, DevOps) that the main UniversalTools pack does not install. Icons: \"accent\" colour of the top-right tile and a white \"icon\" on it (si:<name> from Simple Icons, lucide:<name> from Lucide, custom:<name> or file:<name> from scripts/icons); \"iconColor\" overrides the default white; an accent like \"#E34F26>#1572B6\" is a diagonal gradient; run `npm run icon` after changing them.",
     "main": {
         "accent": "#FBBF24",
         "icon": "lucide:code-xml",
@@ -22,13 +22,14 @@
                 "playwright",
                 "live server",
                 "edge devtools",
-                "live share"
+                "live share",
+                "vite"
             ],
             "extensions": [
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
                 "biomejs.biome",
-                "oxc.oxc-vscode",
+                "VoidZero.vite-plus-extension-pack",
                 "EditorConfig.EditorConfig",
                 "eamodio.gitlens",
                 "GitHub.vscode-pull-request-github",
@@ -37,7 +38,6 @@
                 "ritwickdey.LiveServer",
                 "techer.open-in-browser",
                 "firefox-devtools.vscode-firefox-debug",
-                "vitest.explorer",
                 "ms-playwright.playwright",
                 "christian-kohler.npm-intellisense",
                 "christian-kohler.path-intellisense",
@@ -206,7 +206,7 @@
         {
             "dir": "cpp",
             "displayName": "UniversalTools: C/C++",
-            "description": "C/C++ IntelliSense and debugging, CMake and Makefile projects, and the CodeLLDB debugger.",
+            "description": "The Microsoft C/C++ Extension Pack (IntelliSense, debugging, CMake Tools, C/C++ DevTools, themes), CMake IntelliSense, Makefile Tools, TestMate C++ and the CodeLLDB debugger.",
             "accent": "#00599C",
             "icon": "file:cpp-mark",
             "includeInMain": false,
@@ -216,12 +216,16 @@
                 "cpp",
                 "cmake",
                 "makefile",
-                "lldb"
+                "lldb",
+                "testmate",
+                "catch2",
+                "gtest"
             ],
             "extensions": [
-                "ms-vscode.cpptools",
-                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack",
+                "KylinIdeTeam.cmake-intellisence",
                 "ms-vscode.makefile-tools",
+                "matepek.vscode-catch2-test-adapter",
                 "vadimcn.vscode-lldb"
             ]
         },
@@ -317,6 +321,71 @@
             ],
             "extensions": [
                 "golang.go"
+            ]
+        },
+        {
+            "dir": "ai",
+            "displayName": "UniversalTools: AI",
+            "description": "AI coding agents and assistants: Claude Code, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider for Copilot Chat (GitHub Copilot Chat itself is built into VS Code).",
+            "accent": "#7C3AED",
+            "icon": "lucide:sparkles",
+            "includeInMain": false,
+            "keywords": [
+                "ai",
+                "claude",
+                "copilot",
+                "codex",
+                "chatgpt",
+                "gemini",
+                "antigravity",
+                "cline",
+                "continue",
+                "ollama",
+                "hugging face",
+                "agent"
+            ],
+            "extensions": [
+                "anthropic.claude-code",
+                "openai.chatgpt",
+                "Google.google-antigravity",
+                "Google.geminicodeassist",
+                "saoudrizwan.claude-dev",
+                "Continue.continue",
+                "Ollama.ollama",
+                "HuggingFace.huggingface-vscode-chat"
+            ]
+        },
+        {
+            "dir": "devops",
+            "displayName": "UniversalTools: DevOps & Config",
+            "description": "Remote SSH and Remote Explorer, PowerShell, ShellCheck and shell-format for scripts, and support for nginx, Apache and systemd config files, log files and CSV.",
+            "accent": "#0F766E",
+            "icon": "lucide:server",
+            "includeInMain": false,
+            "keywords": [
+                "devops",
+                "ssh",
+                "remote",
+                "powershell",
+                "shell",
+                "bash",
+                "nginx",
+                "apache",
+                "systemd",
+                "logs",
+                "csv"
+            ],
+            "extensions": [
+                "ms-vscode-remote.remote-ssh",
+                "ms-vscode.remote-explorer",
+                "ms-vscode.PowerShell",
+                "timonwong.shellcheck",
+                "foxundermoon.shell-format",
+                "ahmadalli.vscode-nginx-conf",
+                "mrmlnc.vscode-apache",
+                "coolbear.systemd-unit-file",
+                "emilast.LogFileHighlighter",
+                "mechatroner.rainbow-csv"
             ]
         }
     ]
