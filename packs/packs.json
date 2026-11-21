@@ -327,7 +327,7 @@
         {
             "dir": "ai",
             "displayName": "UniversalTools: AI",
-            "description": "AI coding agents and assistants: Claude Code, GitHub Copilot Chat, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider.",
+            "description": "AI coding agents and assistants: Claude Code, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider for Copilot Chat (GitHub Copilot Chat itself is built into VS Code).",
             "accent": "#7C3AED",
             "icon": "lucide:sparkles",
             "includeInMain": false,
@@ -347,7 +347,6 @@
             ],
             "extensions": [
                 "anthropic.claude-code",
-                "GitHub.copilot-chat",
                 "openai.chatgpt",
                 "Google.google-antigravity",
                 "Google.geminicodeassist",

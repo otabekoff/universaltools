@@ -1,6 +1,6 @@
 # UniversalTools: AI
 
-AI coding agents and assistants: Claude Code, GitHub Copilot Chat, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider.
+AI coding agents and assistants: Claude Code, OpenAI Codex, Google Antigravity, Gemini Code Assist, Cline, Continue, plus local and Hugging Face models through Ollama and the Hugging Face provider for Copilot Chat (GitHub Copilot Chat itself is built into VS Code).
 
 A standalone UniversalTools pack. The main [UniversalTools](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools) web pack does not install it; install it on its own when you need these extensions.
 
@@ -11,7 +11,6 @@ A standalone UniversalTools pack. The main [UniversalTools](https://marketplace.
 | Extension |
 |---|
 | [anthropic.claude-code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) |
-| [GitHub.copilot-chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) |
 | [openai.chatgpt](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) |
 | [Google.google-antigravity](https://marketplace.visualstudio.com/items?itemName=Google.google-antigravity) |
 | [Google.geminicodeassist](https://marketplace.visualstudio.com/items?itemName=Google.geminicodeassist) |

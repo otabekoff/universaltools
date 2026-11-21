@@ -8,7 +8,7 @@ All notable changes to the "universaltools" extension pack will be documented in
 
 Not installed by the main UniversalTools web pack; install the ones you need.
 
-- **UniversalTools: AI:** Claude Code (`anthropic.claude-code`), GitHub Copilot Chat (`GitHub.copilot-chat`), Codex (`openai.chatgpt`), Google Antigravity (`Google.google-antigravity`), Gemini Code Assist (`Google.geminicodeassist`), Cline (`saoudrizwan.claude-dev`), Continue (`Continue.continue`), Ollama (`Ollama.ollama`), Hugging Face provider for Copilot Chat (`HuggingFace.huggingface-vscode-chat`)
+- **UniversalTools: AI:** Claude Code (`anthropic.claude-code`), Codex (`openai.chatgpt`), Google Antigravity (`Google.google-antigravity`), Gemini Code Assist (`Google.geminicodeassist`), Cline (`saoudrizwan.claude-dev`), Continue (`Continue.continue`), Ollama (`Ollama.ollama`), Hugging Face provider for Copilot Chat (`HuggingFace.huggingface-vscode-chat`). GitHub Copilot Chat is not listed because VS Code now ships it built in.
 - **UniversalTools: DevOps & Config:** Remote - SSH (`ms-vscode-remote.remote-ssh`), Remote Explorer (`ms-vscode.remote-explorer`), PowerShell (`ms-vscode.PowerShell`), ShellCheck (`timonwong.shellcheck`), shell-format (`foxundermoon.shell-format`), NGINX Configuration Language Support (`ahmadalli.vscode-nginx-conf`), Apache Conf (`mrmlnc.vscode-apache`), systemd unit files (`coolbear.systemd-unit-file`), Log File Highlighter (`emilast.LogFileHighlighter`), Rainbow CSV (`mechatroner.rainbow-csv`)
 
 ### Changed

@@ -42,7 +42,7 @@ Separate packs for other languages, AI assistants and DevOps work. The main Univ
 | [UniversalTools: Java & Kotlin](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-java-kotlin) | Language Support for Java, Java Debugger, Java Test Runner, Maven, Gradle, Project Manager for Java, Kotlin by JetBrains |
 | [UniversalTools: Mobile](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-mobile) | Expo Tools, React Native Tools |
 | [UniversalTools: Go](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-go) | Go |
-| [UniversalTools: AI](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-ai) | Claude Code, GitHub Copilot Chat, Codex (OpenAI), Google Antigravity, Gemini Code Assist, Cline, Continue, Ollama, Hugging Face provider for Copilot Chat |
+| [UniversalTools: AI](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-ai) | Claude Code, Codex (OpenAI), Google Antigravity, Gemini Code Assist, Cline, Continue, Ollama, Hugging Face provider for Copilot Chat. GitHub Copilot Chat is built into VS Code, so it is not listed. |
 | [UniversalTools: DevOps & Config](https://marketplace.visualstudio.com/items?itemName=universaltools.universaltools-devops) | Remote - SSH, Remote Explorer, PowerShell, ShellCheck, shell-format, NGINX configuration, Apache Conf, systemd unit files, Log File Highlighter, Rainbow CSV |
 
 ## Upgrading from 3.x
